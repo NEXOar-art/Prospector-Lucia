@@ -345,7 +345,7 @@
     <h1>🎯 Dashboard Leads Paraguay | NEXO-ART</h1>
     <div class="subtitle">Prospección E-commerce - Restaurantes & Repuestos</div>
   </div>
-  <div class="date">📅 Lunes, 31 Agosto 2026</div>
+  <div class="date">📅 Martes, 01 Septiembre 2026</div>
 </div>
 
 <!-- KPI Cards -->
@@ -534,7 +534,7 @@
       <div class="bar-chart" id="ingresosCiudad"></div>
     </div>
     <div class="matrix-card">
-      <h4>📈 Distribución por Tipo de Repuesto</h4>
+      <h4>📈 Distribución por Tipo de Negocio</h4>
       <div class="bar-chart" id="distTipo"></div>
     </div>
   </div>
@@ -543,111 +543,111 @@
 <script>
 // ==================== DATA ====================
 const restaurantes = [
-  {nombre:"Los López Bar de Río", ciudad:"Asunción - Costanera", telefono:"+595981345607", resenas:438, rating:3.7},
-  {nombre:"Encarnacion Playa Grill", ciudad:"Encarnación - Costanera", telefono:"+595984229405", resenas:1329, rating:4.2},
-  {nombre:"Real Costanera", ciudad:"Encarnación - Costanera", telefono:"+595995609191", resenas:264, rating:4.2},
-  {nombre:"Rincón De La Costa", ciudad:"Encarnación - Costanera", telefono:"+595985144334", resenas:352, rating:4.1},
-  {nombre:"Restaurante Don Pablo", ciudad:"Areguá", telefono:"+595291432275", resenas:3873, rating:4.1},
-  {nombre:"Terracota Café Restó Bar", ciudad:"Areguá", telefono:"+595983777810", resenas:1203, rating:4.2},
-  {nombre:"Patrimonio Resto Bar", ciudad:"Areguá", telefono:"+595985827396", resenas:504, rating:4.0},
-  {nombre:"Arigua", ciudad:"Areguá", telefono:"+595991879400", resenas:531, rating:4.2},
-  {nombre:"Casa Manolo", ciudad:"Areguá", telefono:"+595972533334", resenas:261, rating:4.1},
-  {nombre:"O Gaúcho San Bernardino", ciudad:"San Bernardino", telefono:"+595974828200", resenas:1244, rating:4.7},
-  {nombre:"Manguruyu San Bernardino", ciudad:"San Bernardino", telefono:"+595971707900", resenas:155, rating:4.4},
+  {nombre:"Los López Bar de Río", ciudad:"Asunción - Costanera", telefono:"+595 981 345607", resenas:438, rating:3.7},
+  {nombre:"Encarnacion Playa Grill", ciudad:"Encarnación - Costanera", telefono:"+595 984 229405", resenas:1329, rating:4.2},
+  {nombre:"Real Costanera", ciudad:"Encarnación - Costanera", telefono:"+595 995 609191", resenas:264, rating:4.2},
+  {nombre:"Rincón De La Costa", ciudad:"Encarnación - Costanera", telefono:"+595 985 144334", resenas:352, rating:4.1},
+  {nombre:"Restaurante Don Pablo, Areguá", ciudad:"Areguá", telefono:"+595 291 432 275", resenas:3873, rating:4.1},
+  {nombre:"Terracota • Café • Rest'ó • Bar", ciudad:"Areguá", telefono:"+595 983 777810", resenas:1203, rating:4.2},
+  {nombre:"Patrimonio Resto Bar", ciudad:"Areguá", telefono:"+595 985 827396", resenas:504, rating:4.0},
+  {nombre:"Arigua", ciudad:"Areguá", telefono:"+595 991 879400", resenas:531, rating:4.2},
+  {nombre:"Casa Manolo, Areguá", ciudad:"Areguá", telefono:"+595 972 533334", resenas:261, rating:4.1},
+  {nombre:"O Gaúcho San Bernardino", ciudad:"San Bernardino", telefono:"+595 974 828200", resenas:1244, rating:4.7},
+  {nombre:"Manguruyu San Bernardino", ciudad:"San Bernardino", telefono:"+595 971 707900", resenas:155, rating:4.4},
   {nombre:"La Terraza de Sanber", ciudad:"San Bernardino", telefono:"", resenas:243, rating:3.7},
-  {nombre:"El Super Chivito Uruguayo", ciudad:"San Bernardino", telefono:"+595991920141", resenas:769, rating:4.2},
-  {nombre:"El Café Francés", ciudad:"San Bernardino", telefono:"+595512232295", resenas:555, rating:4.0},
-  {nombre:"Bar San Miguel CDE", ciudad:"Ciudad del Este", telefono:"+595981306693", resenas:389, rating:4.6},
-  {nombre:"Restaurante Luna", ciudad:"Ciudad del Este", telefono:"+595984981888", resenas:133, rating:4.2},
-  {nombre:"ALMA NÓMADA", ciudad:"Villarrica", telefono:"+595987183394", resenas:524, rating:4.4},
-  {nombre:"Patio Gua'i", ciudad:"Villarrica", telefono:"+595981545796", resenas:718, rating:4.4},
+  {nombre:"El Super Chivito Uruguayo San Bernardino", ciudad:"San Bernardino", telefono:"+595 991 920141", resenas:769, rating:4.2},
+  {nombre:"El Café Francés", ciudad:"San Bernardino", telefono:"+595 512 232 295", resenas:555, rating:4.0},
+  {nombre:"Bar San Miguel CDE", ciudad:"Ciudad del Este", telefono:"+595 981 306693", resenas:389, rating:4.6},
+  {nombre:"Restaurante Luna, Ciudad del Este", ciudad:"Ciudad del Este", telefono:"+595 984 981888", resenas:133, rating:4.2},
+  {nombre:"ALMA NÓMADA", ciudad:"Villarrica", telefono:"+595 987 183394", resenas:524, rating:4.4},
+  {nombre:"Patio Gua'i", ciudad:"Villarrica", telefono:"+595 981 545796", resenas:718, rating:4.4},
   {nombre:"Villa Toscana Café & Restó", ciudad:"Villarrica", telefono:"", resenas:151, rating:4.4},
-  {nombre:"Real Restaurant", ciudad:"Luque", telefono:"+595981812891", resenas:1132, rating:4.6},
-  {nombre:"Asaditos La Esquina", ciudad:"Luque", telefono:"+595982211530", resenas:41, rating:4.7},
-  {nombre:"Centro's Bar", ciudad:"Luque", telefono:"+595986818481", resenas:518, rating:4.0},
-  {nombre:"Rico Antojo Resto Bar", ciudad:"Luque", telefono:"+595984760632", resenas:7, rating:3.0},
-  {nombre:"Colmán Resto Bar", ciudad:"Itauguá", telefono:"+595986180028", resenas:1785, rating:4.3},
+  {nombre:"Real Restaurant", ciudad:"Luque", telefono:"+595 981 812891", resenas:1132, rating:4.6},
+  {nombre:"Asaditos \"La Esquina\"", ciudad:"Luque", telefono:"+595 982 211530", resenas:41, rating:4.7},
+  {nombre:"Centro's Bar", ciudad:"Luque", telefono:"+595 986 818481", resenas:518, rating:4.0},
+  {nombre:"Rico Antojo Resto Bar", ciudad:"Luque", telefono:"+595 984 760632", resenas:7, rating:3.0},
+  {nombre:"Colmán Resto Bar - Itauguá", ciudad:"Itauguá", telefono:"+595 986 180028", resenas:1785, rating:4.3},
   {nombre:"Fuego Guaraní", ciudad:"Itauguá", telefono:"", resenas:158, rating:4.3},
-  {nombre:"Inmigrante", ciudad:"Itauguá", telefono:"+595984083840", resenas:28, rating:4.0},
-  {nombre:"Casa Burger Itaugua", ciudad:"Itauguá", telefono:"+595984681969", resenas:210, rating:4.6},
+  {nombre:"Inmigrante", ciudad:"Itauguá", telefono:"+595 984 083840", resenas:28, rating:4.0},
+  {nombre:"Casa Burger Itaugua", ciudad:"Itauguá", telefono:"+595 984 681969", resenas:210, rating:4.6},
   {nombre:"Food Park Concepción", ciudad:"Concepción", telefono:"", resenas:484, rating:4.4},
-  {nombre:"Tagatiyá Restaurante", ciudad:"Concepción", telefono:"+595331241858", resenas:606, rating:4.5},
-  {nombre:"La Madame Pâtisserie", ciudad:"Concepción", telefono:"+595986854974", resenas:91, rating:4.4},
-  {nombre:"Irigoyen Parrilla", ciudad:"Concepción", telefono:"+595971690590", resenas:221, rating:4.4},
+  {nombre:"Tagatiyá Restaurante", ciudad:"Concepción", telefono:"+595 331 241 858", resenas:606, rating:4.5},
+  {nombre:"La Madame - Pâtisserie et Café", ciudad:"Concepción", telefono:"+595 986 854974", resenas:91, rating:4.4},
+  {nombre:"Irigoyen Parrilla", ciudad:"Concepción", telefono:"+595 971 690590", resenas:221, rating:4.4},
   {nombre:"Brasil Sabor", ciudad:"Concepción", telefono:"", resenas:351, rating:4.3},
-  {nombre:"Bar El Pescador", ciudad:"Concepción", telefono:"+595984195550", resenas:212, rating:4.5},
-  {nombre:"SKY RANCH COSTANERA", ciudad:"Encarnación - Costanera", telefono:"+595987322178", resenas:5, rating:5.0},
-  {nombre:"Green Park Encarnacion", ciudad:"Encarnación", telefono:"+595985508818", resenas:275, rating:4.7},
-  {nombre:"Milord Restaurant", ciudad:"Encarnación - Costanera", telefono:"+595971944165", resenas:1171, rating:4.5},
-  {nombre:"Novo Rodeio - Rey do lazo", ciudad:"Encarnación", telefono:"+59571204665", resenas:3800, rating:4.8},
-  {nombre:"Bucca San Bernardino", ciudad:"San Bernardino", telefono:"+595972762001", resenas:63, rating:4.7},
-  {nombre:"Cardamomo Resto Lounge", ciudad:"Ciudad del Este", telefono:"+595975423543", resenas:181, rating:4.6},
-  {nombre:"Ravello Ristorante", ciudad:"Ciudad del Este", telefono:"+595973228827", resenas:536, rating:4.7},
-  {nombre:"Gastrobar", ciudad:"Villarrica", telefono:"+595986412534", resenas:9, rating:5.0},
-  {nombre:"Cocina Explosión", ciudad:"Villarrica", telefono:"+595982194250", resenas:1, rating:5.0},
-  {nombre:"Piccolissimo", ciudad:"Villarrica / Mbocayaty", telefono:"+595991543005", resenas:59, rating:4.9},
-  {nombre:"Bar San Miguel", ciudad:"Asunción centro", telefono:"+595987100102", resenas:3066, rating:4.6},
-  {nombre:"La Preferida", ciudad:"Asunción centro", telefono:"+595981132194", resenas:640, rating:4.4},
-  {nombre:"Cocina Clandestina", ciudad:"Asunción", telefono:"+595983286114", resenas:463, rating:4.6},
-  {nombre:"La Estacion Restaurante Museo", ciudad:"Areguá / Ypacaraí", telefono:"+595982000403", resenas:252, rating:4.6},
-  {nombre:"La Carossa San Bernardino", ciudad:"San Bernardino", telefono:"+595984672929", resenas:132, rating:4.9}
+  {nombre:"Bar El Pescador", ciudad:"Concepción", telefono:"+595 984 195550", resenas:212, rating:4.5},
+  {nombre:"SKY RANCH RESTAURANTE COSTANERA", ciudad:"Encarnación - Costanera", telefono:"+595 987 322178", resenas:5, rating:5.0},
+  {nombre:"Green Park Encarnacion", ciudad:"Encarnación", telefono:"+595 985 508818", resenas:275, rating:4.7},
+  {nombre:"Milord Restaurant", ciudad:"Encarnación - Costanera", telefono:"+595 971 944165", resenas:1171, rating:4.5},
+  {nombre:"Novo Rodeio - Rey do lazo", ciudad:"Encarnación", telefono:"+595 71 204 665", resenas:3800, rating:4.8},
+  {nombre:"Bucca San Bernardino", ciudad:"San Bernardino", telefono:"+595 972 762001", resenas:63, rating:4.7},
+  {nombre:"Cardamomo Resto Lounge", ciudad:"Ciudad del Este", telefono:"+595 975 423543", resenas:181, rating:4.6},
+  {nombre:"Ravello Ristorante", ciudad:"Ciudad del Este", telefono:"+595 973 228827", resenas:536, rating:4.7},
+  {nombre:"Gastrobar", ciudad:"Villarrica", telefono:"+595 986 412534", resenas:9, rating:5.0},
+  {nombre:"Cocina Explosión", ciudad:"Villarrica", telefono:"+595 982 194250", resenas:1, rating:5.0},
+  {nombre:"Piccolissimo", ciudad:"Villarrica / Mbocayaty", telefono:"+595 991 543005", resenas:59, rating:4.9},
+  {nombre:"Bar San Miguel", ciudad:"Asunción centro", telefono:"+595 987 100102", resenas:3066, rating:4.6},
+  {nombre:"La Preferida", ciudad:"Asunción centro", telefono:"+595 981 132194", resenas:640, rating:4.4},
+  {nombre:"Cocina Clandestina", ciudad:"Asunción", telefono:"+595 983 286114", resenas:463, rating:4.6},
+  {nombre:"La Estacion Restaurante Museo", ciudad:"Areguá / Ypacaraí", telefono:"+595 982 000403", resenas:252, rating:4.6},
+  {nombre:"La Carossa San Bernardino", ciudad:"San Bernardino", telefono:"+595 984 672929", resenas:132, rating:4.9}
 ];
 
 const repuestos = [
-  {nombre:"Mundo Motos S.A", ciudad:"Asunción - Eusebio Ayala", telefono:"+595991331440", resenas:169, rating:4.0, tipo:"Motos"},
-  {nombre:"Coyote Motorepuestos Asunción", ciudad:"Asunción - Eusebio Ayala", telefono:"+595981717351", resenas:65, rating:4.6, tipo:"Motos"},
-  {nombre:"NG Repuestos casa central", ciudad:"San Lorenzo", telefono:"+595985411113", resenas:38, rating:4.2, tipo:"Autos"},
-  {nombre:"CHICO REPUESTOS", ciudad:"Asunción", telefono:"+595982930767", resenas:70, rating:4.6, tipo:"Autos"},
-  {nombre:"Rac Repuestos", ciudad:"Asunción centro", telefono:"+59521390580", resenas:73, rating:4.4, tipo:"Autos"},
-  {nombre:"Euroimport S.A.", ciudad:"Asunción centro", telefono:"+595974449739", resenas:238, rating:4.5, tipo:"Autos (BMW/Mercedes)"},
+  {nombre:"Mundo Motos S.A", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 991 331440", resenas:169, rating:4.0, tipo:"Motos"},
+  {nombre:"Coyote Motorepuestos Suc. Asunción", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 981 717351", resenas:65, rating:4.6, tipo:"Motos"},
+  {nombre:"NG Repuestos casa central", ciudad:"San Lorenzo", telefono:"+595 985 411113", resenas:38, rating:4.2, tipo:"Autos"},
+  {nombre:"CHICO REPUESTOS (CASA CENTRAL)", ciudad:"Asunción", telefono:"+595 982 930767", resenas:70, rating:4.6, tipo:"Autos"},
+  {nombre:"Rac Repuestos - Asunción", ciudad:"Asunción centro", telefono:"+595 21 390 580", resenas:73, rating:4.4, tipo:"Autos"},
+  {nombre:"Euroimport S.A.", ciudad:"Asunción centro", telefono:"+595 974 449739", resenas:238, rating:4.5, tipo:"Autos (BMW/Mercedes)"},
   {nombre:"CG Moto Repuestos", ciudad:"Ciudad del Este", telefono:"", resenas:1, rating:4.0, tipo:"Motos"},
-  {nombre:"Mi moto repuestos", ciudad:"Ciudad del Este", telefono:"+595973123249", resenas:3, rating:4.0, tipo:"Motos"},
-  {nombre:"Repuestos Enciso S.R.L.", ciudad:"Ciudad del Este", telefono:"+595983575000", resenas:153, rating:4.5, tipo:"Motos"},
-  {nombre:"R.S. Moto Repuestos", ciudad:"Ciudad del Este", telefono:"+595973560732", resenas:16, rating:4.4, tipo:"Motos"},
-  {nombre:"FRAIDA PY MOTOS", ciudad:"Ciudad del Este", telefono:"+595973750040", resenas:48, rating:4.2, tipo:"Motos"},
-  {nombre:"Max Motorepuesto y taller", ciudad:"Ciudad del Este", telefono:"+595983563550", resenas:32, rating:4.2, tipo:"Motos"},
+  {nombre:"Mi moto repuestos", ciudad:"Ciudad del Este", telefono:"+595 973 123249", resenas:3, rating:4.0, tipo:"Motos"},
+  {nombre:"Repuestos Enciso S.R.L.", ciudad:"Ciudad del Este", telefono:"+595 983 575000", resenas:153, rating:4.5, tipo:"Motos"},
+  {nombre:"R.S. Moto Repuestos", ciudad:"Ciudad del Este", telefono:"+595 973 560732", resenas:16, rating:4.4, tipo:"Motos"},
+  {nombre:"FRAIDA PY MOTOS", ciudad:"Ciudad del Este", telefono:"+595 973 750040", resenas:48, rating:4.2, tipo:"Motos"},
+  {nombre:"Max Motorepuesto y taller", ciudad:"Ciudad del Este", telefono:"+595 983 563550", resenas:32, rating:4.2, tipo:"Motos"},
   {nombre:"EM Moto Repuesto", ciudad:"Ciudad del Este", telefono:"", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"ZAMIR MOTO REPUESTOS", ciudad:"Ciudad del Este km4", telefono:"+595994424177", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Imperio Accesorios Automotivo", ciudad:"Ciudad del Este km11", telefono:"+595984303848", resenas:46, rating:4.7, tipo:"Autos"},
-  {nombre:"Baterias 24 Horas", ciudad:"Ciudad del Este km3", telefono:"+595983758012", resenas:9, rating:4.4, tipo:"Autos"},
-  {nombre:"Japón Auto Repuesto", ciudad:"Ciudad del Este", telefono:"+595986533958", resenas:87, rating:4.2, tipo:"Autos"},
-  {nombre:"Oman Autopartes", ciudad:"Ciudad del Este (Vía Chile)", telefono:"+595981667070", resenas:150, rating:4.3, tipo:"Autos"},
-  {nombre:"Carlão Auto Repuestos", ciudad:"Ciudad del Este km4", telefono:"+595986130473", resenas:205, rating:4.7, tipo:"Autos/Camiones"},
-  {nombre:"TOÑI BATERIAS", ciudad:"Ciudad del Este km7", telefono:"+595992675296", resenas:2, rating:5.0, tipo:"Autos"},
-  {nombre:"Motorepuestos San Isidro", ciudad:"Coronel Oviedo", telefono:"+595973129224", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"Casa de las Motos", ciudad:"Coronel Oviedo", telefono:"+595521201623", resenas:19, rating:4.6, tipo:"Motos"},
-  {nombre:"Makako motorepuestos", ciudad:"Coronel Oviedo", telefono:"+595992992809", resenas:7, rating:4.9, tipo:"Motos"},
-  {nombre:"Moto Center Repuestos", ciudad:"Coronel Oviedo", telefono:"+595985284668", resenas:7, rating:4.9, tipo:"Motos"},
+  {nombre:"ZAMIR MOTO REPUESTOS", ciudad:"Ciudad del Este km4", telefono:"+595 994 424177", resenas:0, rating:0, tipo:"Motos"},
+  {nombre:"Imperio Accesorios Automotivo", ciudad:"Ciudad del Este km11", telefono:"+595 984 303848", resenas:46, rating:4.7, tipo:"Autos"},
+  {nombre:"Baterias 24 Horas", ciudad:"Ciudad del Este km3", telefono:"+595 983 758012", resenas:9, rating:4.4, tipo:"Autos"},
+  {nombre:"Japón Auto Repuesto Importación De Autoparts", ciudad:"Ciudad del Este", telefono:"+595 986 533958", resenas:87, rating:4.2, tipo:"Autos"},
+  {nombre:"Oman Autopartes", ciudad:"Ciudad del Este (Vía Chile)", telefono:"+595 981 667070", resenas:150, rating:4.3, tipo:"Autos"},
+  {nombre:"Carlão Auto Repuestos", ciudad:"Ciudad del Este km4", telefono:"+595 986 130473", resenas:205, rating:4.7, tipo:"Autos/Camiones"},
+  {nombre:"TOÑI BATERIAS", ciudad:"Ciudad del Este km7", telefono:"+595 992 675296", resenas:2, rating:5.0, tipo:"Autos"},
+  {nombre:"Motorepuestos San Isidro", ciudad:"Coronel Oviedo", telefono:"+595 973 129224", resenas:2, rating:5.0, tipo:"Motos"},
+  {nombre:"Casa de las Motos", ciudad:"Coronel Oviedo", telefono:"+595 521 201 623", resenas:19, rating:4.6, tipo:"Motos"},
+  {nombre:"Makako motorepuestos", ciudad:"Coronel Oviedo", telefono:"+595 992 992809", resenas:7, rating:4.9, tipo:"Motos"},
+  {nombre:"Moto Center Repuestos", ciudad:"Coronel Oviedo", telefono:"+595 985 284668", resenas:7, rating:4.9, tipo:"Motos"},
   {nombre:"Moto repuestos 8 de diciembre", ciudad:"Coronel Oviedo", telefono:"", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Motorepuestos La Curva", ciudad:"Coronel Oviedo", telefono:"+595971417595", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Speed Car Repuestos", ciudad:"Coronel Oviedo", telefono:"+595982723008", resenas:97, rating:4.3, tipo:"Autos"},
-  {nombre:"Auto Repuestos Mauricio", ciudad:"Coronel Oviedo", telefono:"+595991450008", resenas:26, rating:4.7, tipo:"Autos"},
-  {nombre:"Auto Repuestos - La Ruta", ciudad:"Coronel Oviedo", telefono:"+595981206849", resenas:13, rating:4.3, tipo:"Autos"},
-  {nombre:"Repuestos Sucatão", ciudad:"Coronel Oviedo", telefono:"+595984741958", resenas:51, rating:4.2, tipo:"Autos (desarmadero)"},
-  {nombre:"Carsuplay Coronel Oviedo", ciudad:"Coronel Oviedo", telefono:"+595986455760", resenas:0, rating:0, tipo:"Autos"},
-  {nombre:"Moto Repuestos Balletbó", ciudad:"Encarnación", telefono:"+595985200661", resenas:3, rating:5.0, tipo:"Motos"},
-  {nombre:"TM Motos", ciudad:"Encarnación", telefono:"+595975942797", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"Solo Motos", ciudad:"Encarnación", telefono:"+595985281312", resenas:5, rating:4.8, tipo:"Motos"},
-  {nombre:"Motos Del Sur", ciudad:"Encarnación", telefono:"+595995609114", resenas:12, rating:4.3, tipo:"Motos"},
+  {nombre:"Motorepuestos La Curva", ciudad:"Coronel Oviedo", telefono:"+595 971 417595", resenas:0, rating:0, tipo:"Motos"},
+  {nombre:"Speed Car Repuestos", ciudad:"Coronel Oviedo", telefono:"+595 982 723008", resenas:97, rating:4.3, tipo:"Autos"},
+  {nombre:"Auto Repuestos Mauricio", ciudad:"Coronel Oviedo", telefono:"+595 991 450008", resenas:26, rating:4.7, tipo:"Autos"},
+  {nombre:"Auto Repuestos - La Ruta", ciudad:"Coronel Oviedo", telefono:"+595 981 206849", resenas:13, rating:4.3, tipo:"Autos"},
+  {nombre:"Repuestos Sucatão Desarmadero", ciudad:"Coronel Oviedo", telefono:"+595 984 741958", resenas:51, rating:4.2, tipo:"Autos (desarmadero)"},
+  {nombre:"Carsuplay Coronel Oviedo", ciudad:"Coronel Oviedo", telefono:"+595 986 455760", resenas:0, rating:0, tipo:"Autos"},
+  {nombre:"Moto Repuestos Balletbó", ciudad:"Encarnación", telefono:"+595 985 200661", resenas:3, rating:5.0, tipo:"Motos"},
+  {nombre:"TM Motos", ciudad:"Encarnación", telefono:"+595 975 942797", resenas:2, rating:5.0, tipo:"Motos"},
+  {nombre:"Solo Motos", ciudad:"Encarnación", telefono:"+595 985 281312", resenas:5, rating:4.8, tipo:"Motos"},
+  {nombre:"Motos Del Sur", ciudad:"Encarnación", telefono:"+595 995 609114", resenas:12, rating:4.3, tipo:"Motos"},
   {nombre:"Moto Repuestos CENTRO", ciudad:"Encarnación", telefono:"", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"JORGE MOTOSHOPP", ciudad:"Encarnación", telefono:"+595975651002", resenas:126, rating:4.4, tipo:"Motos"},
-  {nombre:"AISEN AUTO PARTES S.A.", ciudad:"Encarnación", telefono:"+595983200713", resenas:36, rating:4.5, tipo:"Autos"},
-  {nombre:"Digital SA Repuestos", ciudad:"Encarnación", telefono:"+595986173034", resenas:132, rating:4.4, tipo:"Autos"},
-  {nombre:"Parts JG SRL", ciudad:"Encarnación", telefono:"+59571206373", resenas:40, rating:4.3, tipo:"Autos"},
-  {nombre:"Willy Car", ciudad:"Encarnación", telefono:"+595985969128", resenas:141, rating:4.0, tipo:"Autos"},
-  {nombre:"Autorepuestos Estrella del Sur", ciudad:"Encarnación", telefono:"+595985802362", resenas:89, rating:4.6, tipo:"Autos (Mercedes)"},
-  {nombre:"Coyote Motorepuesto", ciudad:"Luque", telefono:"+595983392217", resenas:153, rating:4.4, tipo:"Motos"},
-  {nombre:"FG MOTO REPUESTOS", ciudad:"Luque", telefono:"+595984908390", resenas:17, rating:4.7, tipo:"Motos"},
-  {nombre:"Motorrepuestos La Mega", ciudad:"Luque", telefono:"+595976488859", resenas:5, rating:5.0, tipo:"Motos"},
-  {nombre:"Moto Repuestos K.P", ciudad:"Luque", telefono:"+595972631059", resenas:1, rating:1.0, tipo:"Motos"},
-  {nombre:"MD Repuestos Motocicletas", ciudad:"Luque", telefono:"+595981895799", resenas:218, rating:4.6, tipo:"Motos"},
-  {nombre:"Motocross Repuestos Luque", ciudad:"Luque", telefono:"+595982743010", resenas:161, rating:4.5, tipo:"Motos"},
-  {nombre:"FM Repuestos Luque", ciudad:"Luque", telefono:"+595992713534", resenas:0, rating:0, tipo:"Autos"},
-  {nombre:"GUAIRA IMPORT EXPORT", ciudad:"Luque", telefono:"+59521642509", resenas:297, rating:4.5, tipo:"Autos"},
-  {nombre:"PLUSCAR REPUESTOS LUQUE", ciudad:"Luque", telefono:"+595981250400", resenas:9, rating:5.0, tipo:"Autos"},
-  {nombre:"Full Parts s.a", ciudad:"Luque", telefono:"+595992305278", resenas:1, rating:5.0, tipo:"Autos"},
-  {nombre:"Moto Giro Casa Central", ciudad:"Asunción - Eusebio Ayala", telefono:"+595985240730", resenas:97, rating:4.5, tipo:"Motos"},
-  {nombre:"Autopar Comercial S.A.", ciudad:"Asunción - Eusebio Ayala", telefono:"+59521553916", resenas:137, rating:4.3, tipo:"Motos"}
+  {nombre:"JORGE MOTOSHOPP", ciudad:"Encarnación", telefono:"+595 975 651002", resenas:126, rating:4.4, tipo:"Motos"},
+  {nombre:"AISEN AUTO PARTES S.A.", ciudad:"Encarnación", telefono:"+595 983 200713", resenas:36, rating:4.5, tipo:"Autos"},
+  {nombre:"Digital SA Repuestos - Equipamientos y Autovidrios", ciudad:"Encarnación", telefono:"+595 986 173034", resenas:132, rating:4.4, tipo:"Autos"},
+  {nombre:"Parts JG SRL", ciudad:"Encarnación", telefono:"+595 71 206 373", resenas:40, rating:4.3, tipo:"Autos"},
+  {nombre:"Willy Car.", ciudad:"Encarnación", telefono:"+595 985 969128", resenas:141, rating:4.0, tipo:"Autos"},
+  {nombre:"Autorepuestos Estrella del Sur S.R.L.", ciudad:"Encarnación", telefono:"+595 985 802362", resenas:89, rating:4.6, tipo:"Autos (Mercedes)"},
+  {nombre:"Coyote Motorepuesto", ciudad:"Luque", telefono:"+595 983 392217", resenas:153, rating:4.4, tipo:"Motos"},
+  {nombre:"FG MOTO REPUESTOS", ciudad:"Luque", telefono:"+595 984 908390", resenas:17, rating:4.7, tipo:"Motos"},
+  {nombre:"Motorrepuestos La Mega", ciudad:"Luque", telefono:"+595 976 488859", resenas:5, rating:5.0, tipo:"Motos"},
+  {nombre:"Moto Repuestos & Lubricantes K.P", ciudad:"Luque", telefono:"+595 972 631059", resenas:1, rating:1.0, tipo:"Motos"},
+  {nombre:"MD Repuestos y Accesorios para Motocicletas, Luque", ciudad:"Luque", telefono:"+595 981 895799", resenas:218, rating:4.6, tipo:"Motos"},
+  {nombre:"Motocross Repuestos Luque", ciudad:"Luque", telefono:"+595 982 743010", resenas:161, rating:4.5, tipo:"Motos"},
+  {nombre:"FM Repuestos Luque", ciudad:"Luque", telefono:"+595 992 713534", resenas:0, rating:0, tipo:"Autos"},
+  {nombre:"GUAIRA IMPORT. EXPORT. S.R.L.", ciudad:"Luque", telefono:"+595 21 642 509", resenas:297, rating:4.5, tipo:"Autos"},
+  {nombre:"PLUSCAR REPUESTOS LUQUE", ciudad:"Luque", telefono:"+595 981 250400", resenas:9, rating:5.0, tipo:"Autos"},
+  {nombre:"Full Parts s.a", ciudad:"Luque", telefono:"+595 992 305278", resenas:1, rating:5.0, tipo:"Autos"},
+  {nombre:"Moto Giro Casa Central", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 985 240730", resenas:97, rating:4.5, tipo:"Motos"},
+  {nombre:"Autopar Comercial S.A. (Casa Central)", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 21 553 916", resenas:137, rating:4.3, tipo:"Motos"}
 ];
 
 // Add potential flag
@@ -658,6 +658,42 @@ const PRECIO_BASE = 290;
 const PRECIO_SKILL = 30;
 const PRECIO_MANTENIMIENTO = 40;
 const PRECIO_TOTAL = PRECIO_BASE + PRECIO_SKILL + PRECIO_MANTENIMIENTO; // $360
+
+// ==================== MENSAJES DE WHATSAPP ====================
+// Nota: Se usa * para negritas en WhatsApp en lugar de ** para garantizar compatibilidad
+const msgRepuestos = encodeURIComponent(`👋 *¡Hola! Buenas tardes!!.*
+
+Somos *NEXO-ART*. Ayudamos a casas de repuestos de Motos y Automotrices a vender más y sistematizar su atención al cliente con su propia *Tienda Web con venta directa a WhatsApp*. Integramos todas tus redes sociales.
+
+---
+🚗 *¿Qué vas a lograr con tu tienda online?*
+* *Catálogo 24/7:* Tus clientes buscan el repuesto en tu web, consultan stock/precios y envían el pedido listo a tu WhatsApp en un clic.
+* *Integración con Meta Business:* El sistema envía automáticamente los datos del pedido y del cliente a tu WhatsApp para que solo tengas que cerrar la venta.
+* *Presencia local impecable:* Optimizamos tu perfil de Google Maps para que los clientes de tu zona te encuentren primeros a vos y no a tu competencia.
+
+---
+💡 *Tu tienda web no es un gasto, es un vendedor automático:*
+* *Chau mensajes repetitivos:* Ahorrá el tiempo de responder constantemente "¿Tenés stock?" o "¿Cuánto cuesta?".
+* *Aumentá tus ganancias:* Si tu equipo pierde 1 hora al día respondiendo consultas básicas, son más de 25 horas al mes perdidas. Convertí ese tiempo en despachos y ventas reales.
+* *Atención profesional:* Brindale a tu cliente la rapidez que espera al comprar repuestos para su vehículo.
+
+Te devuelvo lo más valioso: *tiempo para hacer crecer tu negocio.*
+
+---
+📍 *Mirá un ejemplo de cómo se vería tu catálogo online acá:* https://fc-racing.vercel.app/`);
+
+const msgRestaurantes = encodeURIComponent(`Hola buenas noches!! Somos NEXO-ART y ayudamos a negocios gastronómicos a digitalizar el servicio y atencion, creamos páginas web app para rotiserías, pizzerías y restaurantes, totalmente resposivas para que se vean en cualquier dispositivo.
+
+🍕 ¿Qué logramos con tu web?
+Los clientes pueden hacer pedidos, reservas o consultas online, o simplemente desde un código QR en la mesa pedir al mostrador sin necesidad de que lo atienda una persona.
+La información llega automáticamente al WhatsApp del local, para responder más rápido y sin perder tiempo.
+Además, optimizamos tu presencia en Google Maps y Google Business Profile para que más personas te encuentren y confíen en tu negocio.
+
+💡 Un sitio web no es un gasto, es una inversión:
+Te ayuda a ahorrar tiempo, ordenar la atención y aumentar tus ventas.
+Menos mensajes repetitivos, más pedidos y más tiempo para hacer crecer tu negocio.
+
+Mirá un ejemplo de cómo se vería tu local: https://nexoar-art.github.io/TONGOY/`);
 
 // ==================== INIT ====================
 function init() {
@@ -770,7 +806,9 @@ function renderTable(tbodyId, data, tipo) {
     let waCell = '';
     if (item.telefono) {
       const cleanPhone = item.telefono.replace(/[^0-9]/g, '');
-      const msg = encodeURIComponent(`Hola! Vi su negocio en Google Maps y me gustaría ofrecerle nuestros servicios de E-commerce en NEXO-ART. ¿Tienen un momento para conversar?`);
+      // SELECCIÓN DE MENSAJE SEGÚN CATEGORÍA
+      const msg = tipo === 'restaurante' ? msgRestaurantes : msgRepuestos;
+      
       waCell = `<a href="https://wa.me/${cleanPhone}?text=${msg}" target="_blank" class="wa-link">
         <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Enviar
@@ -814,7 +852,6 @@ function switchTab(tabName, el) {
 
 // ==================== MATRIX ANALYSIS ====================
 function renderMatrix() {
-  // Matrix Ciudad x Tipo
   const allData = [
     ...restaurantes.map(r => ({...r, tipoNeg: 'Restaurante'})),
     ...repuestos.map(r => ({...r, tipoNeg: r.tipo}))
