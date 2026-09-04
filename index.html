@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard Leads Paraguay | NEXO-ART E-commerce</title>
+<title>Dashboard Leads Luján & Pilar | NEXO-ART</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
   body {
@@ -18,18 +18,64 @@
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0,119,182,0.25);
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
   }
-  .header h1 { font-size: 26px; font-weight: 700; }
-  .header .subtitle { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 14px; opacity: 0.95; line-height: 1.6; }
   .header .date {
+    display: inline-block;
     background: rgba(255,255,255,0.2);
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+    backdrop-filter: blur(10px);
+  }
+
+  /* Exchange Rate Input */
+  .exchange-rate-container {
+    background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%);
+    padding: 18px 22px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(255,159,28,0.3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: #2c3e50;
+  }
+  .exchange-rate-container .label-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .exchange-rate-container .icon { font-size: 28px; }
+  .exchange-rate-container .title { font-size: 15px; font-weight: 700; }
+  .exchange-rate-container .sub { font-size: 12px; opacity: 0.85; }
+  .exchange-rate-container input {
+    width: 140px;
+    padding: 10px 14px;
+    border: 3px solid white;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    background: white;
+    color: #2c3e50;
+    outline: none;
+    transition: all 0.2s;
+  }
+  .exchange-rate-container input:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.5);
+    transform: scale(1.02);
+  }
+  .exchange-rate-container .currency-display {
+    background: rgba(255,255,255,0.3);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 13px;
     backdrop-filter: blur(10px);
   }
@@ -37,7 +83,7 @@
   /* KPI Cards */
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 20px;
   }
@@ -55,12 +101,102 @@
   .kpi-card.orange { border-color: #FF9F1C; }
   .kpi-card.pink { border-color: #EF476F; }
   .kpi-card.purple { border-color: #9D4EDD; }
+  .kpi-card.red { border-color: #E63946; }
   .kpi-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-  .kpi-value { font-size: 28px; font-weight: 700; margin-top: 6px; color: #2c3e50; }
+  .kpi-value { font-size: 26px; font-weight: 700; margin-top: 6px; color: #2c3e50; }
   .kpi-sub { font-size: 12px; color: #95a5a6; margin-top: 4px; }
 
-  /* Service Pricing Card */
-  .service-card {
+  /* TOTAL CARD */
+  .total-card {
+    background: linear-gradient(135deg, #E63946 0%, #9D4EDD 50%, #0077B6 100%);
+    color: white;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 10px 32px rgba(230,57,70,0.35);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .total-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .total-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+  }
+  .total-card-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .total-card-header .badge {
+    background: rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+  }
+  .total-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    position: relative;
+    z-index: 2;
+  }
+  .total-item {
+    background: rgba(255,255,255,0.15);
+    padding: 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .total-item .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .total-item .value {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .total-item .detail {
+    font-size: 11px;
+    opacity: 0.85;
+    margin-top: 4px;
+  }
+  .total-item.highlight {
+    background: rgba(255,255,255,0.95);
+    color: #2c3e50;
+    border: 2px solid #FFD93D;
+  }
+  .total-item.highlight .value {
+    color: #E63946;
+    font-size: 26px;
+  }
+  .total-item.highlight .label { color: #7f8c8d; }
+
+  /* Info Card */
+  .info-card {
     background: linear-gradient(135deg, #06D6A0 0%, #00B4D8 100%);
     color: white;
     padding: 22px;
@@ -68,107 +204,79 @@
     box-shadow: 0 8px 24px rgba(6,214,160,0.25);
     margin-bottom: 20px;
   }
-  .service-card h3 { font-size: 18px; margin-bottom: 12px; }
-  .service-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-  .service-item {
+  .info-card h3 { font-size: 18px; margin-bottom: 14px; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .benefit-item {
     background: rgba(255,255,255,0.2);
-    padding: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .benefit-item strong { display: block; margin-bottom: 4px; font-size: 14px; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .plan-card {
+    background: rgba(255,255,255,0.2);
+    padding: 14px;
     border-radius: 10px;
     backdrop-filter: blur(10px);
   }
-  .service-item .label { font-size: 12px; opacity: 0.9; }
-  .service-item .price { font-size: 20px; font-weight: 700; margin-top: 4px; }
-  .service-total {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 2px dashed rgba(255,255,255,0.4);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .plan-card.popular {
+    background: rgba(255,255,255,0.35);
+    border: 2px solid #FFD93D;
+    position: relative;
   }
-  .service-total .total-price { font-size: 28px; font-weight: 800; }
-
-  /* Filters */
-  .filters-container {
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    margin-bottom: 20px;
-  }
-  .filters-title {
-    font-size: 15px;
+  .plan-card.popular::before {
+    content: "⭐ MÁS VENDIDO";
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: #FFD93D;
+    color: #2c3e50;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 10px;
     font-weight: 700;
-    color: #0077B6;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-  .filters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-  }
-  .filter-group label {
-    display: block;
+  .plan-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .plan-price { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .plan-maintenance {
+    display: inline-block;
+    background: rgba(255,255,255,0.3);
+    padding: 3px 10px;
+    border-radius: 12px;
     font-size: 11px;
-    color: #7f8c8d;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-weight: 700;
+    margin-bottom: 8px;
   }
-  .filter-group input, .filter-group select {
-    width: 100%;
-    padding: 8px 12px;
-    border: 2px solid #e0e6ed;
-    border-radius: 8px;
-    font-size: 13px;
-    transition: all 0.2s;
-    background: #f8fafc;
-  }
-  .filter-group input:focus, .filter-group select:focus {
-    outline: none;
-    border-color: #00B4D8;
-    background: white;
-  }
-  .btn-reset {
-    background: #EF476F;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-    margin-top: 22px;
-    transition: all 0.2s;
-  }
-  .btn-reset:hover { background: #d63a5e; transform: translateY(-2px); }
-
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .tab {
-    background: white;
-    border: 2px solid #e0e6ed;
-    padding: 10px 20px;
+  .plan-desc { font-size: 12px; opacity: 0.95; line-height: 1.5; }
+  .addon {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.15);
     border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
     font-size: 13px;
-    transition: all 0.2s;
-    color: #7f8c8d;
   }
-  .tab:hover { border-color: #00B4D8; color: #00B4D8; }
-  .tab.active {
-    background: linear-gradient(135deg, #00B4D8 0%, #0077B6 100%);
-    color: white;
-    border-color: transparent;
+  .payment-methods {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px dashed rgba(255,255,255,0.4);
+    font-size: 13px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   /* Tables */
@@ -196,34 +304,34 @@
     font-size: 12px;
     font-weight: 600;
   }
-  .table-wrapper { overflow-x: auto; max-height: 600px; overflow-y: auto; }
+  .table-wrapper { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead {
     background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
     color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
   }
   th {
     padding: 12px 10px;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
+  th:nth-child(2) { text-align: left; }
   td {
-    padding: 10px;
+    padding: 12px 10px;
     border-bottom: 1px solid #f0f4f8;
     vertical-align: middle;
+    text-align: center;
   }
+  td:nth-child(2) { text-align: left; }
   tbody tr { transition: background 0.15s; }
   tbody tr:hover { background: #f8fafc; }
-  tbody tr.potential { background: linear-gradient(90deg, rgba(6,214,160,0.1) 0%, rgba(6,214,160,0.02) 100%); }
+  tbody tr.potential { background: linear-gradient(90deg, rgba(6,214,160,0.12) 0%, rgba(6,214,160,0.02) 100%); }
   tbody tr.potential td:first-child { border-left: 4px solid #06D6A0; }
 
-  .checkbox-cell { width: 40px; text-align: center; }
+  .checkbox-cell { width: 40px; }
   .checkbox-cell input[type="checkbox"] {
     width: 18px; height: 18px;
     cursor: pointer;
@@ -247,16 +355,77 @@
   .wa-link:hover { background: #128C7E; transform: scale(1.05); }
   .wa-icon { width: 14px; height: 14px; }
 
-  .rating-badge {
+  .city-badge {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 12px;
     font-weight: 700;
     font-size: 12px;
   }
-  .rating-high { background: #d4f5e9; color: #06D6A0; }
-  .rating-mid { background: #fff4d6; color: #FF9F1C; }
-  .rating-low { background: #ffd6dc; color: #EF476F; }
+  .city-lujan { background: #e0f4ff; color: #0077B6; }
+  .city-pilar { background: #ffe0e9; color: #E63946; }
+
+  .plan-btn {
+    background: white;
+    border: 2px solid #e0e6ed;
+    padding: 5px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s;
+    color: #7f8c8d;
+  }
+  .plan-btn:hover { transform: scale(1.05); }
+  .plan-btn.basic.active {
+    background: #00B4D8;
+    color: white;
+    border-color: #00B4D8;
+  }
+  .plan-btn.advanced.active {
+    background: #FFD93D;
+    color: #2c3e50;
+    border-color: #FFD93D;
+  }
+  .plan-btn.premium.active {
+    background: linear-gradient(135deg, #9D4EDD 0%, #EF476F 100%);
+    color: white;
+    border-color: #9D4EDD;
+  }
+
+  .skill-btn {
+    background: white;
+    border: 2px solid #9D4EDD;
+    color: #9D4EDD;
+    padding: 5px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .skill-btn:hover { transform: scale(1.05); }
+  .skill-btn.active {
+    background: linear-gradient(135deg, #9D4EDD 0%, #E63946 100%);
+    color: white;
+    border-color: #9D4EDD;
+  }
+
+  .price-display {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    background: #f0f4f8;
+    color: #7f8c8d;
+    min-width: 100px;
+  }
+  .price-display.basic { background: #e0f4ff; color: #0077B6; }
+  .price-display.advanced { background: #fff4d6; color: #d48806; }
+  .price-display.premium { background: #f0e6ff; color: #9D4EDD; }
+  .price-display.has-skill { box-shadow: 0 0 0 2px #E63946; }
 
   .potential-btn {
     background: transparent;
@@ -275,77 +444,41 @@
   }
   .potential-btn:hover { transform: scale(1.05); }
 
-  /* Matrix Analysis */
-  .matrix-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  .matrix-card {
-    background: white;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  }
-  .matrix-card h4 {
-    font-size: 14px;
-    color: #0077B6;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f0f4f8;
-  }
-  .matrix-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .matrix-table th {
-    background: #f0f4f8;
-    color: #0077B6;
-    padding: 8px;
-    text-align: center;
-    font-size: 11px;
-  }
-  .matrix-table td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #f0f4f8;
-  }
-  .matrix-table td:first-child { text-align: left; font-weight: 600; background: #f8fafc; }
-  .cell-hot { background: #06D6A0; color: white; font-weight: 700; }
-  .cell-warm { background: #FFD93D; color: #2c3e50; font-weight: 600; }
-  .cell-cold { background: #f0f4f8; color: #7f8c8d; }
-
-  .bar-chart { display: flex; flex-direction: column; gap: 8px; }
-  .bar-row { display: flex; align-items: center; gap: 10px; font-size: 12px; }
-  .bar-label { width: 100px; font-weight: 600; color: #2c3e50; }
-  .bar-track { flex: 1; height: 24px; background: #f0f4f8; border-radius: 12px; overflow: hidden; position: relative; }
-  .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #00B4D8 0%, #06D6A0 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    color: white;
-    font-weight: 700;
-    font-size: 11px;
-    transition: width 0.5s ease;
-  }
-
   .hidden { display: none; }
 
   @media (max-width: 768px) {
     .header h1 { font-size: 20px; }
     .kpi-value { font-size: 22px; }
+    th, td { padding: 8px 6px; font-size: 11px; }
+    .total-item .value { font-size: 20px; }
+    .total-item.highlight .value { font-size: 22px; }
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div>
-    <h1>🎯 Dashboard Leads Paraguay | NEXO-ART</h1>
-    <div class="subtitle">Prospección E-commerce - Restaurantes & Repuestos</div>
+  <h1>🇦🇷 Dashboard Leads Luján & Pilar | NEXO-ART</h1>
+  <div class="subtitle">
+    <strong>NEXO‑ART</strong> es una agencia digital especializada en crear páginas web y soluciones de e‑commerce diseñadas para aumentar ventas y optimizar la atención al cliente. Transformamos la presencia online de negocios gastronómicos, comercios y empresas industriales, convirtiendo visitantes en clientes reales.
   </div>
-  <div class="date">📅 Martes, 01 Septiembre 2026</div>
+  <div class="date">📅 Sábado, 05 Septiembre 2026</div>
+</div>
+
+<!-- Exchange Rate Input -->
+<div class="exchange-rate-container">
+  <div class="label-group">
+    <div class="icon">💱</div>
+    <div>
+      <div class="title">Tipo de Cambio Dólar/Peso del Día</div>
+      <div class="sub">Actualizá el valor para calcular totales en ARS</div>
+    </div>
+  </div>
+  <div class="label-group">
+    <div class="currency-display">1 USD =</div>
+    <input type="number" id="exchangeRate" value="1500" min="1" step="0.01" oninput="updateKPIs()">
+    <div class="currency-display">ARS</div>
+  </div>
 </div>
 
 <!-- KPI Cards -->
@@ -353,7 +486,7 @@
   <div class="kpi-card blue">
     <div class="kpi-label">Total Leads</div>
     <div class="kpi-value" id="kpiTotalLeads">0</div>
-    <div class="kpi-sub">Restaurantes + Repuestos</div>
+    <div class="kpi-sub">Luján + Pilar</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">Potenciales Clientes</div>
@@ -363,325 +496,163 @@
   <div class="kpi-card orange">
     <div class="kpi-label">Ingresos Potenciales</div>
     <div class="kpi-value" id="kpiIngresos">$0</div>
-    <div class="kpi-sub">USD por servicios</div>
+    <div class="kpi-sub">ARS por servicios</div>
   </div>
   <div class="kpi-card pink">
-    <div class="kpi-label">Leads Filtrados</div>
-    <div class="kpi-value" id="kpiFiltrados">0</div>
-    <div class="kpi-sub">Según filtros activos</div>
-  </div>
-  <div class="kpi-card purple">
     <div class="kpi-label">Conversión</div>
     <div class="kpi-value" id="kpiConversion">0%</div>
     <div class="kpi-sub">Potenciales / Total</div>
   </div>
-</div>
-
-<!-- Service Pricing -->
-<div class="service-card">
-  <h3>💼 Paquete de Servicios E-commerce NEXO-ART</h3>
-  <div class="service-items">
-    <div class="service-item">
-      <div class="label">🛒 E-commerce Base</div>
-      <div class="price">$290 USD</div>
-    </div>
-    <div class="service-item">
-      <div class="label">📊 Skill Dashboard (Opcional)</div>
-      <div class="price">+ $30 USD</div>
-    </div>
-    <div class="service-item">
-      <div class="label">🔧 Mantenimiento Mensual</div>
-      <div class="price">+ $40 USD</div>
-    </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">Mantenimiento Mensual</div>
+    <div class="kpi-value" id="kpiMantenimiento">$0</div>
+    <div class="kpi-sub">USD recurrente</div>
   </div>
-  <div class="service-total">
-    <div>💰 Paquete Completo por Cliente:</div>
-    <div class="total-price">$360 USD</div>
+  <div class="kpi-card red">
+    <div class="kpi-label">Skills Activados</div>
+    <div class="kpi-value" id="kpiSkills">$0</div>
+    <div class="kpi-sub">USD por dashboards</div>
   </div>
 </div>
 
-<!-- Filters -->
-<div class="filters-container">
-  <div class="filters-title">🔍 Filtros Inteligentes</div>
-  <div class="filters-grid">
-    <div class="filter-group">
-      <label>📝 Nombre del Negocio</label>
-      <input type="text" id="filterNombre" placeholder="Buscar...">
+<!-- TOTAL CARD -->
+<div class="total-card">
+  <div class="total-card-header">
+    <h2>💎 TOTAL GENERAL (Plan + Skill + Mantenimiento)</h2>
+    <div class="badge">📊 Cálculo en tiempo real</div>
+  </div>
+  <div class="total-grid">
+    <div class="total-item">
+      <div class="label">💵 Total en USD</div>
+      <div class="value" id="totalUSD">$0</div>
+      <div class="detail">Skill + Mantenimiento</div>
     </div>
-    <div class="filter-group">
-      <label>🏙️ Ciudad / Zona</label>
-      <select id="filterCiudad"><option value="">Todas</option></select>
+    <div class="total-item">
+      <div class="label">💰 Total Único (ARS)</div>
+      <div class="value" id="totalUnicoARS">$0</div>
+      <div class="detail">Planes + Skills convertidos</div>
     </div>
-    <div class="filter-group">
-      <label>🏷️ Tipo</label>
-      <select id="filterTipo"><option value="">Todos</option></select>
+    <div class="total-item">
+      <div class="label">🔄 Total Mensual (ARS)</div>
+      <div class="value" id="totalMensualARS">$0</div>
+      <div class="detail">Mantenimiento recurrente</div>
     </div>
-    <div class="filter-group">
-      <label>⭐ Calificación Mínima</label>
-      <select id="filterCalificacion">
-        <option value="">Todas</option>
-        <option value="4.5">4.5+ (Excelente)</option>
-        <option value="4.0">4.0+ (Muy Bueno)</option>
-        <option value="3.5">3.5+ (Bueno)</option>
-        <option value="3.0">3.0+ (Regular)</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label>💬 Reseñas Mínimas</label>
-      <select id="filterResenas">
-        <option value="">Todas</option>
-        <option value="500">500+ (Alta tracción)</option>
-        <option value="100">100+ (Establecido)</option>
-        <option value="50">50+ (En crecimiento)</option>
-        <option value="10">10+ (Nuevo)</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label>🎯 Solo Potenciales</label>
-      <select id="filterPotencial">
-        <option value="">Todos</option>
-        <option value="si">Solo Potenciales ✓</option>
-        <option value="no">No Potenciales</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <button class="btn-reset" onclick="resetFilters()">🔄 Limpiar Filtros</button>
+    <div class="total-item highlight">
+      <div class="label">🏆 TOTAL 1er MES (ARS)</div>
+      <div class="value" id="totalPrimerMesARS">$0</div>
+      <div class="detail">Único + Mensual del primer mes</div>
     </div>
   </div>
 </div>
 
-<!-- Tabs -->
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('restaurantes', this)">🍽️ Restaurantes</div>
-  <div class="tab" onclick="switchTab('repuestos', this)">🔧 Repuestos Motos y Autos</div>
-  <div class="tab" onclick="switchTab('matriz', this)">📊 Análisis Matriz</div>
-</div>
+<!-- Info Card -->
+<div class="info-card">
+  <h3>🎯 Beneficios Clave para el Negocio</h3>
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <strong>🛒 Pedidos y reservas online</strong>
+      Los clientes pueden comprar o reservar directamente desde la web, con integración automática a WhatsApp del negocio. Los comensales pueden pedir desde la mesa utilizando un código QR al menú del e-commerce.
+    </div>
+    <div class="benefit-item">
+      <strong>📍 Optimización Google Maps</strong>
+      Mayor visibilidad y confianza en Google Maps y Business Profile para atraer nuevos clientes a tu zona.
+    </div>
+    <div class="benefit-item">
+      <strong>⚙️ Automatización y orden</strong>
+      Menos mensajes repetitivos, más tiempo para atender y crecer. El sistema trabaja por vos 24/7.
+    </div>
+    <div class="benefit-item">
+      <strong>📱 Diseño responsive y profesional</strong>
+      Sitios que se adaptan perfectamente a cualquier dispositivo (celular, tablet, PC).
+    </div>
+  </div>
 
-<!-- Tab Restaurantes -->
-<div id="tab-restaurantes" class="tab-content">
-  <div class="table-container">
-    <div class="table-header">
-      <h3>🍽️ Leads de Restaurantes</h3>
-      <span class="table-count" id="countRestaurantes">0 negocios</span>
+  <h3 style="margin-top: 18px;">💰 Planes en Argentina (Precios Actualizados)</h3>
+  <div class="pricing-grid">
+    <div class="plan-card">
+      <div class="plan-name">🥉 Básico</div>
+      <div class="plan-price">$98.000 ARS</div>
+      <div class="plan-maintenance">+ $0/mes mantenimiento</div>
+      <div class="plan-desc">Landing page estática, diseño premium responsive, formulario de captura de leads.</div>
     </div>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th class="checkbox-cell">✓</th>
-            <th>Negocio</th>
-            <th>Ciudad / Zona</th>
-            <th>📞 WhatsApp</th>
-            <th>💬 Reseñas</th>
-            <th>⭐ Calificación</th>
-            <th>🎯 Potencial</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyRestaurantes"></tbody>
-      </table>
+    <div class="plan-card popular">
+      <div class="plan-name">🥈 Avanzado</div>
+      <div class="plan-price">$160.000 ARS</div>
+      <div class="plan-maintenance">+ $30 USD/mes mantenimiento</div>
+      <div class="plan-desc">Incluye todo lo del Básico + animaciones premium, CRM automático, mantenimiento mensual.</div>
     </div>
+    <div class="plan-card">
+      <div class="plan-name">🥇 Premium</div>
+      <div class="plan-price">$430.000 ARS</div>
+      <div class="plan-maintenance">+ $60 USD/mes mantenimiento</div>
+      <div class="plan-desc">Web completa full custom, e‑commerce integrado, SEO técnico avanzado, mantenimiento mensual.</div>
+    </div>
+  </div>
+  <div class="addon">
+    📊 <strong>Skill Dashboard específico para restaurantes:</strong> + 40 USD por única vez (Opcional) — Se suma al plan elegido.
+  </div>
+  <div class="payment-methods">
+    <div>💳 <strong>Métodos de Pago:</strong></div>
+    <div>🟣 Mercado Pago</div>
+    <div>🏦 Transferencia bancaria</div>
   </div>
 </div>
 
-<!-- Tab Repuestos -->
-<div id="tab-repuestos" class="tab-content hidden">
-  <div class="table-container">
-    <div class="table-header">
-      <h3>🔧 Leads de Repuestos (Motos y Autos)</h3>
-      <span class="table-count" id="countRepuestos">0 negocios</span>
-    </div>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th class="checkbox-cell">✓</th>
-            <th>Negocio</th>
-            <th>Ciudad / Zona</th>
-            <th>Tipo</th>
-            <th>📞 WhatsApp</th>
-            <th>💬 Reseñas</th>
-            <th>⭐ Calificación</th>
-            <th>🎯 Potencial</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyRepuestos"></tbody>
-      </table>
-    </div>
+<!-- Table of Leads -->
+<div class="table-container">
+  <div class="table-header">
+    <h3>🍽️ Leads de Restaurantes - Luján & Pilar</h3>
+    <span class="table-count" id="countLeads">0 negocios</span>
   </div>
-</div>
-
-<!-- Tab Matriz -->
-<div id="tab-matriz" class="tab-content hidden">
-  <div class="matrix-grid">
-    <div class="matrix-card">
-      <h4>🗺️ Matriz Ciudad × Tipo de Negocio</h4>
-      <table class="matrix-table" id="matrixCiudadTipo"></table>
-    </div>
-    <div class="matrix-card">
-      <h4>⭐ Matriz Ciudad × Rango de Calificación</h4>
-      <table class="matrix-table" id="matrixCiudadRating"></table>
-    </div>
-    <div class="matrix-card">
-      <h4>💬 Matriz Ciudad × Rango de Reseñas</h4>
-      <table class="matrix-table" id="matrixCiudadResenas"></table>
-    </div>
-    <div class="matrix-card">
-      <h4>🏆 Top 10 Ciudades por Cantidad de Leads</h4>
-      <div class="bar-chart" id="topCiudades"></div>
-    </div>
-    <div class="matrix-card">
-      <h4>💰 Ingresos Potenciales por Ciudad</h4>
-      <div class="bar-chart" id="ingresosCiudad"></div>
-    </div>
-    <div class="matrix-card">
-      <h4>📈 Distribución por Tipo de Negocio</h4>
-      <div class="bar-chart" id="distTipo"></div>
-    </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="checkbox-cell">✓</th>
+          <th style="text-align:left">Ciudad</th>
+          <th>📞 WhatsApp</th>
+          <th>🥉 Básico</th>
+          <th>⭐ Avanzado</th>
+          <th>🥇 Premium</th>
+          <th>📊 Skill</th>
+          <th>💰 Precio Total</th>
+          <th>🎯 Potencial</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyLeads"></tbody>
+    </table>
   </div>
 </div>
 
 <script>
-// ==================== DATA ====================
-const restaurantes = [
-  {nombre:"Los López Bar de Río", ciudad:"Asunción - Costanera", telefono:"+595 981 345607", resenas:438, rating:3.7},
-  {nombre:"Encarnacion Playa Grill", ciudad:"Encarnación - Costanera", telefono:"+595 984 229405", resenas:1329, rating:4.2},
-  {nombre:"Real Costanera", ciudad:"Encarnación - Costanera", telefono:"+595 995 609191", resenas:264, rating:4.2},
-  {nombre:"Rincón De La Costa", ciudad:"Encarnación - Costanera", telefono:"+595 985 144334", resenas:352, rating:4.1},
-  {nombre:"Restaurante Don Pablo, Areguá", ciudad:"Areguá", telefono:"+595 291 432 275", resenas:3873, rating:4.1},
-  {nombre:"Terracota • Café • Rest'ó • Bar", ciudad:"Areguá", telefono:"+595 983 777810", resenas:1203, rating:4.2},
-  {nombre:"Patrimonio Resto Bar", ciudad:"Areguá", telefono:"+595 985 827396", resenas:504, rating:4.0},
-  {nombre:"Arigua", ciudad:"Areguá", telefono:"+595 991 879400", resenas:531, rating:4.2},
-  {nombre:"Casa Manolo, Areguá", ciudad:"Areguá", telefono:"+595 972 533334", resenas:261, rating:4.1},
-  {nombre:"O Gaúcho San Bernardino", ciudad:"San Bernardino", telefono:"+595 974 828200", resenas:1244, rating:4.7},
-  {nombre:"Manguruyu San Bernardino", ciudad:"San Bernardino", telefono:"+595 971 707900", resenas:155, rating:4.4},
-  {nombre:"La Terraza de Sanber", ciudad:"San Bernardino", telefono:"", resenas:243, rating:3.7},
-  {nombre:"El Super Chivito Uruguayo San Bernardino", ciudad:"San Bernardino", telefono:"+595 991 920141", resenas:769, rating:4.2},
-  {nombre:"El Café Francés", ciudad:"San Bernardino", telefono:"+595 512 232 295", resenas:555, rating:4.0},
-  {nombre:"Bar San Miguel CDE", ciudad:"Ciudad del Este", telefono:"+595 981 306693", resenas:389, rating:4.6},
-  {nombre:"Restaurante Luna, Ciudad del Este", ciudad:"Ciudad del Este", telefono:"+595 984 981888", resenas:133, rating:4.2},
-  {nombre:"ALMA NÓMADA", ciudad:"Villarrica", telefono:"+595 987 183394", resenas:524, rating:4.4},
-  {nombre:"Patio Gua'i", ciudad:"Villarrica", telefono:"+595 981 545796", resenas:718, rating:4.4},
-  {nombre:"Villa Toscana Café & Restó", ciudad:"Villarrica", telefono:"", resenas:151, rating:4.4},
-  {nombre:"Real Restaurant", ciudad:"Luque", telefono:"+595 981 812891", resenas:1132, rating:4.6},
-  {nombre:"Asaditos \"La Esquina\"", ciudad:"Luque", telefono:"+595 982 211530", resenas:41, rating:4.7},
-  {nombre:"Centro's Bar", ciudad:"Luque", telefono:"+595 986 818481", resenas:518, rating:4.0},
-  {nombre:"Rico Antojo Resto Bar", ciudad:"Luque", telefono:"+595 984 760632", resenas:7, rating:3.0},
-  {nombre:"Colmán Resto Bar - Itauguá", ciudad:"Itauguá", telefono:"+595 986 180028", resenas:1785, rating:4.3},
-  {nombre:"Fuego Guaraní", ciudad:"Itauguá", telefono:"", resenas:158, rating:4.3},
-  {nombre:"Inmigrante", ciudad:"Itauguá", telefono:"+595 984 083840", resenas:28, rating:4.0},
-  {nombre:"Casa Burger Itaugua", ciudad:"Itauguá", telefono:"+595 984 681969", resenas:210, rating:4.6},
-  {nombre:"Food Park Concepción", ciudad:"Concepción", telefono:"", resenas:484, rating:4.4},
-  {nombre:"Tagatiyá Restaurante", ciudad:"Concepción", telefono:"+595 331 241 858", resenas:606, rating:4.5},
-  {nombre:"La Madame - Pâtisserie et Café", ciudad:"Concepción", telefono:"+595 986 854974", resenas:91, rating:4.4},
-  {nombre:"Irigoyen Parrilla", ciudad:"Concepción", telefono:"+595 971 690590", resenas:221, rating:4.4},
-  {nombre:"Brasil Sabor", ciudad:"Concepción", telefono:"", resenas:351, rating:4.3},
-  {nombre:"Bar El Pescador", ciudad:"Concepción", telefono:"+595 984 195550", resenas:212, rating:4.5},
-  {nombre:"SKY RANCH RESTAURANTE COSTANERA", ciudad:"Encarnación - Costanera", telefono:"+595 987 322178", resenas:5, rating:5.0},
-  {nombre:"Green Park Encarnacion", ciudad:"Encarnación", telefono:"+595 985 508818", resenas:275, rating:4.7},
-  {nombre:"Milord Restaurant", ciudad:"Encarnación - Costanera", telefono:"+595 971 944165", resenas:1171, rating:4.5},
-  {nombre:"Novo Rodeio - Rey do lazo", ciudad:"Encarnación", telefono:"+595 71 204 665", resenas:3800, rating:4.8},
-  {nombre:"Bucca San Bernardino", ciudad:"San Bernardino", telefono:"+595 972 762001", resenas:63, rating:4.7},
-  {nombre:"Cardamomo Resto Lounge", ciudad:"Ciudad del Este", telefono:"+595 975 423543", resenas:181, rating:4.6},
-  {nombre:"Ravello Ristorante", ciudad:"Ciudad del Este", telefono:"+595 973 228827", resenas:536, rating:4.7},
-  {nombre:"Gastrobar", ciudad:"Villarrica", telefono:"+595 986 412534", resenas:9, rating:5.0},
-  {nombre:"Cocina Explosión", ciudad:"Villarrica", telefono:"+595 982 194250", resenas:1, rating:5.0},
-  {nombre:"Piccolissimo", ciudad:"Villarrica / Mbocayaty", telefono:"+595 991 543005", resenas:59, rating:4.9},
-  {nombre:"Bar San Miguel", ciudad:"Asunción centro", telefono:"+595 987 100102", resenas:3066, rating:4.6},
-  {nombre:"La Preferida", ciudad:"Asunción centro", telefono:"+595 981 132194", resenas:640, rating:4.4},
-  {nombre:"Cocina Clandestina", ciudad:"Asunción", telefono:"+595 983 286114", resenas:463, rating:4.6},
-  {nombre:"La Estacion Restaurante Museo", ciudad:"Areguá / Ypacaraí", telefono:"+595 982 000403", resenas:252, rating:4.6},
-  {nombre:"La Carossa San Bernardino", ciudad:"San Bernardino", telefono:"+595 984 672929", resenas:132, rating:4.9}
+// ==================== DATOS DE LEADS ACTUALIZADOS ====================
+const leads = [
+  // CIUDAD DE LUJÁN (7 leads)
+  {ciudad:"Luján", telefono:"+5492323329521", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5492323606699", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5492323538045", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5491136981845", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5492323631085", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5491124699713", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Luján", telefono:"+5492323213413", planSeleccionado:null, skill:false, potential:false},
+
+  // CIUDAD DE PILAR (5 leads)
+  {ciudad:"Pilar", telefono:"+5491130537858", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491150506910", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491135664280", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491131475467", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491121778420", planSeleccionado:null, skill:false, potential:false}
 ];
 
-const repuestos = [
-  {nombre:"Mundo Motos S.A", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 991 331440", resenas:169, rating:4.0, tipo:"Motos"},
-  {nombre:"Coyote Motorepuestos Suc. Asunción", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 981 717351", resenas:65, rating:4.6, tipo:"Motos"},
-  {nombre:"NG Repuestos casa central", ciudad:"San Lorenzo", telefono:"+595 985 411113", resenas:38, rating:4.2, tipo:"Autos"},
-  {nombre:"CHICO REPUESTOS (CASA CENTRAL)", ciudad:"Asunción", telefono:"+595 982 930767", resenas:70, rating:4.6, tipo:"Autos"},
-  {nombre:"Rac Repuestos - Asunción", ciudad:"Asunción centro", telefono:"+595 21 390 580", resenas:73, rating:4.4, tipo:"Autos"},
-  {nombre:"Euroimport S.A.", ciudad:"Asunción centro", telefono:"+595 974 449739", resenas:238, rating:4.5, tipo:"Autos (BMW/Mercedes)"},
-  {nombre:"CG Moto Repuestos", ciudad:"Ciudad del Este", telefono:"", resenas:1, rating:4.0, tipo:"Motos"},
-  {nombre:"Mi moto repuestos", ciudad:"Ciudad del Este", telefono:"+595 973 123249", resenas:3, rating:4.0, tipo:"Motos"},
-  {nombre:"Repuestos Enciso S.R.L.", ciudad:"Ciudad del Este", telefono:"+595 983 575000", resenas:153, rating:4.5, tipo:"Motos"},
-  {nombre:"R.S. Moto Repuestos", ciudad:"Ciudad del Este", telefono:"+595 973 560732", resenas:16, rating:4.4, tipo:"Motos"},
-  {nombre:"FRAIDA PY MOTOS", ciudad:"Ciudad del Este", telefono:"+595 973 750040", resenas:48, rating:4.2, tipo:"Motos"},
-  {nombre:"Max Motorepuesto y taller", ciudad:"Ciudad del Este", telefono:"+595 983 563550", resenas:32, rating:4.2, tipo:"Motos"},
-  {nombre:"EM Moto Repuesto", ciudad:"Ciudad del Este", telefono:"", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"ZAMIR MOTO REPUESTOS", ciudad:"Ciudad del Este km4", telefono:"+595 994 424177", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Imperio Accesorios Automotivo", ciudad:"Ciudad del Este km11", telefono:"+595 984 303848", resenas:46, rating:4.7, tipo:"Autos"},
-  {nombre:"Baterias 24 Horas", ciudad:"Ciudad del Este km3", telefono:"+595 983 758012", resenas:9, rating:4.4, tipo:"Autos"},
-  {nombre:"Japón Auto Repuesto Importación De Autoparts", ciudad:"Ciudad del Este", telefono:"+595 986 533958", resenas:87, rating:4.2, tipo:"Autos"},
-  {nombre:"Oman Autopartes", ciudad:"Ciudad del Este (Vía Chile)", telefono:"+595 981 667070", resenas:150, rating:4.3, tipo:"Autos"},
-  {nombre:"Carlão Auto Repuestos", ciudad:"Ciudad del Este km4", telefono:"+595 986 130473", resenas:205, rating:4.7, tipo:"Autos/Camiones"},
-  {nombre:"TOÑI BATERIAS", ciudad:"Ciudad del Este km7", telefono:"+595 992 675296", resenas:2, rating:5.0, tipo:"Autos"},
-  {nombre:"Motorepuestos San Isidro", ciudad:"Coronel Oviedo", telefono:"+595 973 129224", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"Casa de las Motos", ciudad:"Coronel Oviedo", telefono:"+595 521 201 623", resenas:19, rating:4.6, tipo:"Motos"},
-  {nombre:"Makako motorepuestos", ciudad:"Coronel Oviedo", telefono:"+595 992 992809", resenas:7, rating:4.9, tipo:"Motos"},
-  {nombre:"Moto Center Repuestos", ciudad:"Coronel Oviedo", telefono:"+595 985 284668", resenas:7, rating:4.9, tipo:"Motos"},
-  {nombre:"Moto repuestos 8 de diciembre", ciudad:"Coronel Oviedo", telefono:"", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Motorepuestos La Curva", ciudad:"Coronel Oviedo", telefono:"+595 971 417595", resenas:0, rating:0, tipo:"Motos"},
-  {nombre:"Speed Car Repuestos", ciudad:"Coronel Oviedo", telefono:"+595 982 723008", resenas:97, rating:4.3, tipo:"Autos"},
-  {nombre:"Auto Repuestos Mauricio", ciudad:"Coronel Oviedo", telefono:"+595 991 450008", resenas:26, rating:4.7, tipo:"Autos"},
-  {nombre:"Auto Repuestos - La Ruta", ciudad:"Coronel Oviedo", telefono:"+595 981 206849", resenas:13, rating:4.3, tipo:"Autos"},
-  {nombre:"Repuestos Sucatão Desarmadero", ciudad:"Coronel Oviedo", telefono:"+595 984 741958", resenas:51, rating:4.2, tipo:"Autos (desarmadero)"},
-  {nombre:"Carsuplay Coronel Oviedo", ciudad:"Coronel Oviedo", telefono:"+595 986 455760", resenas:0, rating:0, tipo:"Autos"},
-  {nombre:"Moto Repuestos Balletbó", ciudad:"Encarnación", telefono:"+595 985 200661", resenas:3, rating:5.0, tipo:"Motos"},
-  {nombre:"TM Motos", ciudad:"Encarnación", telefono:"+595 975 942797", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"Solo Motos", ciudad:"Encarnación", telefono:"+595 985 281312", resenas:5, rating:4.8, tipo:"Motos"},
-  {nombre:"Motos Del Sur", ciudad:"Encarnación", telefono:"+595 995 609114", resenas:12, rating:4.3, tipo:"Motos"},
-  {nombre:"Moto Repuestos CENTRO", ciudad:"Encarnación", telefono:"", resenas:2, rating:5.0, tipo:"Motos"},
-  {nombre:"JORGE MOTOSHOPP", ciudad:"Encarnación", telefono:"+595 975 651002", resenas:126, rating:4.4, tipo:"Motos"},
-  {nombre:"AISEN AUTO PARTES S.A.", ciudad:"Encarnación", telefono:"+595 983 200713", resenas:36, rating:4.5, tipo:"Autos"},
-  {nombre:"Digital SA Repuestos - Equipamientos y Autovidrios", ciudad:"Encarnación", telefono:"+595 986 173034", resenas:132, rating:4.4, tipo:"Autos"},
-  {nombre:"Parts JG SRL", ciudad:"Encarnación", telefono:"+595 71 206 373", resenas:40, rating:4.3, tipo:"Autos"},
-  {nombre:"Willy Car.", ciudad:"Encarnación", telefono:"+595 985 969128", resenas:141, rating:4.0, tipo:"Autos"},
-  {nombre:"Autorepuestos Estrella del Sur S.R.L.", ciudad:"Encarnación", telefono:"+595 985 802362", resenas:89, rating:4.6, tipo:"Autos (Mercedes)"},
-  {nombre:"Coyote Motorepuesto", ciudad:"Luque", telefono:"+595 983 392217", resenas:153, rating:4.4, tipo:"Motos"},
-  {nombre:"FG MOTO REPUESTOS", ciudad:"Luque", telefono:"+595 984 908390", resenas:17, rating:4.7, tipo:"Motos"},
-  {nombre:"Motorrepuestos La Mega", ciudad:"Luque", telefono:"+595 976 488859", resenas:5, rating:5.0, tipo:"Motos"},
-  {nombre:"Moto Repuestos & Lubricantes K.P", ciudad:"Luque", telefono:"+595 972 631059", resenas:1, rating:1.0, tipo:"Motos"},
-  {nombre:"MD Repuestos y Accesorios para Motocicletas, Luque", ciudad:"Luque", telefono:"+595 981 895799", resenas:218, rating:4.6, tipo:"Motos"},
-  {nombre:"Motocross Repuestos Luque", ciudad:"Luque", telefono:"+595 982 743010", resenas:161, rating:4.5, tipo:"Motos"},
-  {nombre:"FM Repuestos Luque", ciudad:"Luque", telefono:"+595 992 713534", resenas:0, rating:0, tipo:"Autos"},
-  {nombre:"GUAIRA IMPORT. EXPORT. S.R.L.", ciudad:"Luque", telefono:"+595 21 642 509", resenas:297, rating:4.5, tipo:"Autos"},
-  {nombre:"PLUSCAR REPUESTOS LUQUE", ciudad:"Luque", telefono:"+595 981 250400", resenas:9, rating:5.0, tipo:"Autos"},
-  {nombre:"Full Parts s.a", ciudad:"Luque", telefono:"+595 992 305278", resenas:1, rating:5.0, tipo:"Autos"},
-  {nombre:"Moto Giro Casa Central", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 985 240730", resenas:97, rating:4.5, tipo:"Motos"},
-  {nombre:"Autopar Comercial S.A. (Casa Central)", ciudad:"Asunción - Eusebio Ayala", telefono:"+595 21 553 916", resenas:137, rating:4.3, tipo:"Motos"}
-];
+// ==================== PRECIOS PLANES ACTUALIZADOS ====================
+const PLANES = {
+  basico:   { nombre: "🥉 Básico",   precio: 98000,  mantenimiento: 0  },
+  avanzado: { nombre: "⭐ Avanzado", precio: 160000, mantenimiento: 30 },
+  premium:  { nombre: "🥇 Premium",  precio: 430000, mantenimiento: 60 }
+};
+const PRECIO_SKILL = 40; // USD
 
-// Add potential flag
-restaurantes.forEach(r => r.potential = false);
-repuestos.forEach(r => r.potential = false);
-
-const PRECIO_BASE = 290;
-const PRECIO_SKILL = 30;
-const PRECIO_MANTENIMIENTO = 40;
-const PRECIO_TOTAL = PRECIO_BASE + PRECIO_SKILL + PRECIO_MANTENIMIENTO; // $360
-
-// ==================== MENSAJES DE WHATSAPP ====================
-// Nota: Se usa * para negritas en WhatsApp en lugar de ** para garantizar compatibilidad
-const msgRepuestos = encodeURIComponent(`👋 *¡Hola! Buenas tardes!!.*
-
-Somos *NEXO-ART*. Ayudamos a casas de repuestos de Motos y Automotrices a vender más y sistematizar su atención al cliente con su propia *Tienda Web con venta directa a WhatsApp*. Integramos todas tus redes sociales.
-
----
-🚗 *¿Qué vas a lograr con tu tienda online?*
-* *Catálogo 24/7:* Tus clientes buscan el repuesto en tu web, consultan stock/precios y envían el pedido listo a tu WhatsApp en un clic.
-* *Integración con Meta Business:* El sistema envía automáticamente los datos del pedido y del cliente a tu WhatsApp para que solo tengas que cerrar la venta.
-* *Presencia local impecable:* Optimizamos tu perfil de Google Maps para que los clientes de tu zona te encuentren primeros a vos y no a tu competencia.
-
----
-💡 *Tu tienda web no es un gasto, es un vendedor automático:*
-* *Chau mensajes repetitivos:* Ahorrá el tiempo de responder constantemente "¿Tenés stock?" o "¿Cuánto cuesta?".
-* *Aumentá tus ganancias:* Si tu equipo pierde 1 hora al día respondiendo consultas básicas, son más de 25 horas al mes perdidas. Convertí ese tiempo en despachos y ventas reales.
-* *Atención profesional:* Brindale a tu cliente la rapidez que espera al comprar repuestos para su vehículo.
-
-Te devuelvo lo más valioso: *tiempo para hacer crecer tu negocio.*
-
----
-📍 *Mirá un ejemplo de cómo se vería tu catálogo online acá:* https://fc-racing.vercel.app/`);
-
+// ==================== MENSAJE DE WHATSAPP ====================
 const msgRestaurantes = encodeURIComponent(`Hola buenas noches!! Somos NEXO-ART y ayudamos a negocios gastronómicos a digitalizar el servicio y atencion, creamos páginas web app para rotiserías, pizzerías y restaurantes, totalmente resposivas para que se vean en cualquier dispositivo.
 
 🍕 ¿Qué logramos con tu web?
@@ -697,299 +668,113 @@ Mirá un ejemplo de cómo se vería tu local: https://nexoar-art.github.io/TONGO
 
 // ==================== INIT ====================
 function init() {
-  populateFilters();
   renderAll();
-  document.getElementById('filterNombre').addEventListener('input', renderAll);
-  document.getElementById('filterCiudad').addEventListener('change', renderAll);
-  document.getElementById('filterTipo').addEventListener('change', renderAll);
-  document.getElementById('filterCalificacion').addEventListener('change', renderAll);
-  document.getElementById('filterResenas').addEventListener('change', renderAll);
-  document.getElementById('filterPotencial').addEventListener('change', renderAll);
-}
-
-function populateFilters() {
-  const ciudades = [...new Set([...restaurantes.map(r=>r.ciudad), ...repuestos.map(r=>r.ciudad)])].sort();
-  const tipos = [...new Set(repuestos.map(r=>r.tipo))].sort();
-  
-  const selCiudad = document.getElementById('filterCiudad');
-  ciudades.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c; opt.textContent = c;
-    selCiudad.appendChild(opt);
-  });
-  
-  const selTipo = document.getElementById('filterTipo');
-  selTipo.innerHTML = '<option value="">Todos</option><option value="Restaurante">🍽️ Restaurantes</option>';
-  tipos.forEach(t => {
-    const opt = document.createElement('option');
-    opt.value = t; opt.textContent = '🔧 ' + t;
-    selTipo.appendChild(opt);
-  });
-}
-
-function resetFilters() {
-  document.getElementById('filterNombre').value = '';
-  document.getElementById('filterCiudad').value = '';
-  document.getElementById('filterTipo').value = '';
-  document.getElementById('filterCalificacion').value = '';
-  document.getElementById('filterResenas').value = '';
-  document.getElementById('filterPotencial').value = '';
-  renderAll();
-}
-
-// ==================== FILTER LOGIC ====================
-function applyFilters(data, tipo) {
-  const nombre = document.getElementById('filterNombre').value.toLowerCase();
-  const ciudad = document.getElementById('filterCiudad').value;
-  const tipoFilter = document.getElementById('filterTipo').value;
-  const calMin = parseFloat(document.getElementById('filterCalificacion').value) || 0;
-  const resMin = parseInt(document.getElementById('filterResenas').value) || 0;
-  const potFilter = document.getElementById('filterPotencial').value;
-  
-  return data.filter(item => {
-    if (nombre && !item.nombre.toLowerCase().includes(nombre)) return false;
-    if (ciudad && item.ciudad !== ciudad) return false;
-    if (tipoFilter) {
-      if (tipo === 'restaurante' && tipoFilter !== 'Restaurante') return false;
-      if (tipo === 'repuesto' && item.tipo !== tipoFilter) return false;
-    }
-    if (item.rating < calMin) return false;
-    if (item.resenas < resMin) return false;
-    if (potFilter === 'si' && !item.potential) return false;
-    if (potFilter === 'no' && item.potential) return false;
-    return true;
-  });
 }
 
 // ==================== RENDER ====================
 function renderAll() {
-  const restFilt = applyFilters(restaurantes, 'restaurante');
-  const repFilt = applyFilters(repuestos, 'repuesto');
+  renderTable();
+  updateKPIs();
+}
+
+function updateKPIs() {
+  const totalLeads = leads.length;
+  const potenciales = leads.filter(l => l.potential).length;
+  const tc = parseFloat(document.getElementById('exchangeRate').value) || 0;
   
-  renderTable('tbodyRestaurantes', restFilt, 'restaurante');
-  renderTable('tbodyRepuestos', repFilt, 'repuesto');
+  let ingresos = 0;
+  let mantenimiento = 0;
+  let ingresosSkills = 0;
+  leads.forEach(l => {
+    if (l.potential && l.planSeleccionado) {
+      ingresos += PLANES[l.planSeleccionado].precio;
+      mantenimiento += PLANES[l.planSeleccionado].mantenimiento;
+    }
+    if (l.potential && l.skill) {
+      ingresosSkills += PRECIO_SKILL;
+    }
+  });
   
-  document.getElementById('countRestaurantes').textContent = restFilt.length + ' negocios';
-  document.getElementById('countRepuestos').textContent = repFilt.length + ' negocios';
-  
-  // KPIs
-  const totalLeads = restaurantes.length + repuestos.length;
-  const potenciales = restaurantes.filter(r=>r.potential).length + repuestos.filter(r=>r.potential).length;
-  const ingresos = potenciales * PRECIO_TOTAL;
-  const filtrados = restFilt.length + repFilt.length;
   const conversion = totalLeads > 0 ? ((potenciales/totalLeads)*100).toFixed(1) : 0;
   
   document.getElementById('kpiTotalLeads').textContent = totalLeads;
   document.getElementById('kpiPotenciales').textContent = potenciales;
-  document.getElementById('kpiIngresos').textContent = '$' + ingresos.toLocaleString('en-US');
-  document.getElementById('kpiFiltrados').textContent = filtrados;
+  document.getElementById('kpiIngresos').textContent = '$' + ingresos.toLocaleString('es-AR');
   document.getElementById('kpiConversion').textContent = conversion + '%';
+  document.getElementById('kpiMantenimiento').textContent = '$' + mantenimiento + ' USD';
+  document.getElementById('kpiSkills').textContent = '$' + ingresosSkills + ' USD';
+  document.getElementById('countLeads').textContent = totalLeads + ' negocios';
   
-  renderMatrix();
+  const totalUSD = ingresosSkills + mantenimiento;
+  const totalUnicoARS = ingresos + (ingresosSkills * tc);
+  const totalMensualARS = mantenimiento * tc;
+  const totalPrimerMesARS = totalUnicoARS + totalMensualARS;
+  
+  document.getElementById('totalUSD').textContent = '$' + totalUSD.toLocaleString('en-US') + ' USD';
+  document.getElementById('totalUnicoARS').textContent = '$' + Math.round(totalUnicoARS).toLocaleString('es-AR');
+  document.getElementById('totalMensualARS').textContent = '$' + Math.round(totalMensualARS).toLocaleString('es-AR');
+  document.getElementById('totalPrimerMesARS').textContent = '$' + Math.round(totalPrimerMesARS).toLocaleString('es-AR');
 }
 
-function renderTable(tbodyId, data, tipo) {
-  const tbody = document.getElementById(tbodyId);
+function renderTable() {
+  const tbody = document.getElementById('tbodyLeads');
   tbody.innerHTML = '';
   
-  data.forEach((item, idx) => {
+  leads.forEach((item, idx) => {
     const tr = document.createElement('tr');
     if (item.potential) tr.classList.add('potential');
     
-    const globalIdx = tipo === 'restaurante' 
-      ? restaurantes.indexOf(item) 
-      : repuestos.indexOf(item);
+    const cityClass = item.ciudad === 'Luján' ? 'city-lujan' : 'city-pilar';
+    const cityIcon = item.ciudad === 'Luján' ? '⛪' : '🏙️';
     
-    const ratingClass = item.rating >= 4.5 ? 'rating-high' : item.rating >= 4.0 ? 'rating-mid' : 'rating-low';
-    const ratingText = item.rating > 0 ? item.rating.toFixed(1) : 'S/D';
+    const waLink = `<a href="https://wa.me/${item.telefono}?text=${msgRestaurantes}" target="_blank" class="wa-link">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar
+    </a>`;
     
-    let waCell = '';
-    if (item.telefono) {
-      const cleanPhone = item.telefono.replace(/[^0-9]/g, '');
-      // SELECCIÓN DE MENSAJE SEGÚN CATEGORÍA
-      const msg = tipo === 'restaurante' ? msgRestaurantes : msgRepuestos;
-      
-      waCell = `<a href="https://wa.me/${cleanPhone}?text=${msg}" target="_blank" class="wa-link">
-        <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar
-      </a>`;
-    } else {
-      waCell = '<span style="color:#95a5a6;font-size:11px;">No disponible</span>';
-    }
-    
-    let tipoCell = '';
-    if (tipo === 'repuesto') {
-      tipoCell = `<td><span style="background:#e0f4ff;color:#0077B6;padding:3px 8px;border-radius:10px;font-size:11px;font-weight:600;">${item.tipo}</span></td>`;
+    let priceDisplay = '<span class="price-display">Sin plan</span>';
+    if (item.planSeleccionado) {
+      const plan = PLANES[item.planSeleccionado];
+      const mantText = plan.mantenimiento > 0 ? ` + $${plan.mantenimiento}/mes` : ' + $0/mes';
+      const skillText = item.skill ? ` + Skill $${PRECIO_SKILL}` : '';
+      const hasSkillClass = item.skill ? ' has-skill' : '';
+      priceDisplay = `<span class="price-display ${item.planSeleccionado}${hasSkillClass}">$${plan.precio.toLocaleString('es-AR')}${mantText}${skillText}</span>`;
+    } else if (item.skill) {
+      priceDisplay = `<span class="price-display has-skill" style="background:#f0e6ff;color:#9D4EDD;">Solo Skill $${PRECIO_SKILL}</span>`;
     }
     
     tr.innerHTML = `
-      <td class="checkbox-cell"><input type="checkbox" ${item.potential?'checked':''} onchange="togglePotential('${tipo}', ${globalIdx})"></td>
-      <td><strong>${item.nombre}</strong></td>
-      <td>${item.ciudad}</td>
-      ${tipoCell}
-      <td>${waCell}</td>
-      <td><span style="font-weight:600;">${item.resenas.toLocaleString()}</span></td>
-      <td><span class="rating-badge ${ratingClass}">⭐ ${ratingText}</span></td>
-      <td><button class="potential-btn ${item.potential?'active':''}" onclick="togglePotential('${tipo}', ${globalIdx})">${item.potential?'✓ Potencial':'Marcar'}</button></td>
+      <td class="checkbox-cell"><input type="checkbox" ${item.potential?'checked':''} onchange="togglePotential(${idx})"></td>
+      <td><span class="city-badge ${cityClass}">${cityIcon} ${item.ciudad}</span></td>
+      <td>${waLink}</td>
+      <td><button class="plan-btn basic ${item.planSeleccionado==='basico'?'active':''}" onclick="selectPlan(${idx},'basico')">🥉 $98k</button></td>
+      <td><button class="plan-btn advanced ${item.planSeleccionado==='avanzado'?'active':''}" onclick="selectPlan(${idx},'avanzado')">⭐ $160k</button></td>
+      <td><button class="plan-btn premium ${item.planSeleccionado==='premium'?'active':''}" onclick="selectPlan(${idx},'premium')">🥇 $430k</button></td>
+      <td><button class="skill-btn ${item.skill?'active':''}" onclick="toggleSkill(${idx})">📊 ${item.skill?'✓ +$40':'Agregar'}</button></td>
+      <td>${priceDisplay}</td>
+      <td><button class="potential-btn ${item.potential?'active':''}" onclick="togglePotential(${idx})">${item.potential?'✓ Potencial':'Marcar'}</button></td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-function togglePotential(tipo, idx) {
-  if (tipo === 'restaurante') restaurantes[idx].potential = !restaurantes[idx].potential;
-  else repuestos[idx].potential = !repuestos[idx].potential;
+function selectPlan(idx, plan) {
+  if (leads[idx].planSeleccionado === plan) {
+    leads[idx].planSeleccionado = null;
+  } else {
+    leads[idx].planSeleccionado = plan;
+  }
   renderAll();
 }
 
-// ==================== TABS ====================
-function switchTab(tabName, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-  document.getElementById('tab-' + tabName).classList.remove('hidden');
+function toggleSkill(idx) {
+  leads[idx].skill = !leads[idx].skill;
+  renderAll();
 }
 
-// ==================== MATRIX ANALYSIS ====================
-function renderMatrix() {
-  const allData = [
-    ...restaurantes.map(r => ({...r, tipoNeg: 'Restaurante'})),
-    ...repuestos.map(r => ({...r, tipoNeg: r.tipo}))
-  ];
-  
-  const ciudades = [...new Set(allData.map(d => d.ciudad))].sort();
-  const tipos = ['Restaurante', 'Motos', 'Autos'];
-  
-  let html = '<thead><tr><th>Ciudad</th>';
-  tipos.forEach(t => html += `<th>${t}</th>`);
-  html += '<th>Total</th></tr></thead><tbody>';
-  
-  ciudades.forEach(c => {
-    html += `<tr><td>${c}</td>`;
-    let total = 0;
-    tipos.forEach(t => {
-      const count = allData.filter(d => d.ciudad === c && d.tipoNeg === t).length;
-      total += count;
-      const cls = count >= 10 ? 'cell-hot' : count >= 5 ? 'cell-warm' : count > 0 ? 'cell-cold' : '';
-      html += `<td class="${cls}">${count || '-'}</td>`;
-    });
-    html += `<td><strong>${total}</strong></td></tr>`;
-  });
-  html += '</tbody>';
-  document.getElementById('matrixCiudadTipo').innerHTML = html;
-  
-  // Matrix Ciudad x Rating
-  const ratingRanges = [
-    {label: '4.5+ (Excelente)', min: 4.5},
-    {label: '4.0-4.4 (Muy Bueno)', min: 4.0, max: 4.5},
-    {label: '3.5-3.9 (Bueno)', min: 3.5, max: 4.0},
-    {label: '<3.5 (Mejorable)', min: 0, max: 3.5}
-  ];
-  
-  html = '<thead><tr><th>Ciudad</th>';
-  ratingRanges.forEach(r => html += `<th>${r.label}</th>`);
-  html += '</tr></thead><tbody>';
-  
-  ciudades.forEach(c => {
-    html += `<tr><td>${c}</td>`;
-    ratingRanges.forEach(r => {
-      const count = allData.filter(d => {
-        if (d.ciudad !== c) return false;
-        if (r.max) return d.rating >= r.min && d.rating < r.max;
-        return d.rating >= r.min;
-      }).length;
-      const cls = count >= 8 ? 'cell-hot' : count >= 3 ? 'cell-warm' : count > 0 ? 'cell-cold' : '';
-      html += `<td class="${cls}">${count || '-'}</td>`;
-    });
-    html += '</tr>';
-  });
-  html += '</tbody>';
-  document.getElementById('matrixCiudadRating').innerHTML = html;
-  
-  // Matrix Ciudad x Reseñas
-  const resRanges = [
-    {label: '1000+', min: 1000},
-    {label: '500-999', min: 500, max: 1000},
-    {label: '100-499', min: 100, max: 500},
-    {label: '<100', min: 0, max: 100}
-  ];
-  
-  html = '<thead><tr><th>Ciudad</th>';
-  resRanges.forEach(r => html += `<th>${r.label}</th>`);
-  html += '</tr></thead><tbody>';
-  
-  ciudades.forEach(c => {
-    html += `<tr><td>${c}</td>`;
-    resRanges.forEach(r => {
-      const count = allData.filter(d => {
-        if (d.ciudad !== c) return false;
-        if (r.max) return d.resenas >= r.min && d.resenas < r.max;
-        return d.resenas >= r.min;
-      }).length;
-      const cls = count >= 6 ? 'cell-hot' : count >= 3 ? 'cell-warm' : count > 0 ? 'cell-cold' : '';
-      html += `<td class="${cls}">${count || '-'}</td>`;
-    });
-    html += '</tr>';
-  });
-  html += '</tbody>';
-  document.getElementById('matrixCiudadResenas').innerHTML = html;
-  
-  // Top Ciudades
-  const ciudadCounts = {};
-  allData.forEach(d => ciudadCounts[d.ciudad] = (ciudadCounts[d.ciudad]||0)+1);
-  const sorted = Object.entries(ciudadCounts).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const maxCount = sorted[0]?.[1] || 1;
-  
-  let barHtml = '';
-  sorted.forEach(([c, n]) => {
-    const pct = (n/maxCount)*100;
-    barHtml += `<div class="bar-row">
-      <div class="bar-label">${c}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${pct}%">${n}</div></div>
-    </div>`;
-  });
-  document.getElementById('topCiudades').innerHTML = barHtml;
-  
-  // Ingresos por Ciudad (basado en potenciales)
-  const ingresosCiudad = {};
-  [...restaurantes, ...repuestos].forEach(d => {
-    if (d.potential) {
-      ingresosCiudad[d.ciudad] = (ingresosCiudad[d.ciudad]||0) + PRECIO_TOTAL;
-    }
-  });
-  const sortedIng = Object.entries(ingresosCiudad).sort((a,b)=>b[1]-a[1]);
-  const maxIng = sortedIng[0]?.[1] || 1;
-  
-  if (sortedIng.length === 0) {
-    document.getElementById('ingresosCiudad').innerHTML = '<div style="text-align:center;color:#95a5a6;padding:20px;font-size:13px;">💡 Marca negocios como "Potencial" para ver ingresos por ciudad</div>';
-  } else {
-    let barHtml2 = '';
-    sortedIng.forEach(([c, n]) => {
-      const pct = (n/maxIng)*100;
-      barHtml2 += `<div class="bar-row">
-        <div class="bar-label">${c}</div>
-        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:linear-gradient(90deg,#06D6A0,#FFD93D)">$${n}</div></div>
-      </div>`;
-    });
-    document.getElementById('ingresosCiudad').innerHTML = barHtml2;
-  }
-  
-  // Distribución por tipo
-  const tipoCounts = {};
-  repuestos.forEach(r => tipoCounts[r.tipo] = (tipoCounts[r.tipo]||0)+1);
-  tipoCounts['Restaurante'] = restaurantes.length;
-  const sortedTipo = Object.entries(tipoCounts).sort((a,b)=>b[1]-a[1]);
-  const maxTipo = sortedTipo[0]?.[1] || 1;
-  
-  let tipoHtml = '';
-  sortedTipo.forEach(([t, n]) => {
-    const pct = (n/maxTipo)*100;
-    tipoHtml += `<div class="bar-row">
-      <div class="bar-label">${t}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${pct}%">${n}</div></div>
-    </div>`;
-  });
-  document.getElementById('distTipo').innerHTML = tipoHtml;
+function togglePotential(idx) {
+  leads[idx].potential = !leads[idx].potential;
+  renderAll();
 }
 
 init();
