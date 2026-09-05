@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Dashboard Leads Luján & Pilar | NEXO-ART</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
@@ -9,18 +10,18 @@
     background: linear-gradient(135deg, #f0f4f8 0%, #e6f0fa 100%);
     color: #2c3e50;
     min-height: 100vh;
-    padding: 20px;
+    padding: 12px;
   }
   .header {
     background: linear-gradient(135deg, #00B4D8 0%, #0077B6 100%);
     color: white;
-    padding: 25px 30px;
+    padding: 20px;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0,119,182,0.25);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
-  .header .subtitle { font-size: 14px; opacity: 0.95; line-height: 1.6; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .header .subtitle { font-size: 13px; opacity: 0.95; line-height: 1.6; }
   .header .date {
     display: inline-block;
     background: rgba(255,255,255,0.2);
@@ -34,32 +35,32 @@
   /* Exchange Rate Input */
   .exchange-rate-container {
     background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%);
-    padding: 18px 22px;
+    padding: 16px;
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(255,159,28,0.3);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
     color: #2c3e50;
   }
   .exchange-rate-container .label-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
-  .exchange-rate-container .icon { font-size: 28px; }
-  .exchange-rate-container .title { font-size: 15px; font-weight: 700; }
-  .exchange-rate-container .sub { font-size: 12px; opacity: 0.85; }
+  .exchange-rate-container .icon { font-size: 24px; }
+  .exchange-rate-container .title { font-size: 14px; font-weight: 700; }
+  .exchange-rate-container .sub { font-size: 11px; opacity: 0.85; }
   .exchange-rate-container input {
-    width: 140px;
-    padding: 10px 14px;
+    width: 110px;
+    padding: 8px 10px;
     border: 3px solid white;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
     text-align: center;
     background: white;
@@ -73,47 +74,47 @@
   }
   .exchange-rate-container .currency-display {
     background: rgba(255,255,255,0.3);
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 10px;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
     backdrop-filter: blur(10px);
   }
 
   /* KPI Cards */
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
   }
   .kpi-card {
     background: white;
-    padding: 20px;
+    padding: 16px;
     border-radius: 14px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     border-left: 5px solid;
     transition: transform 0.2s;
   }
-  .kpi-card:hover { transform: translateY(-3px); }
+  .kpi-card:hover { transform: translateY(-2px); }
   .kpi-card.blue { border-color: #00B4D8; }
   .kpi-card.green { border-color: #06D6A0; }
   .kpi-card.orange { border-color: #FF9F1C; }
   .kpi-card.pink { border-color: #EF476F; }
   .kpi-card.purple { border-color: #9D4EDD; }
   .kpi-card.red { border-color: #E63946; }
-  .kpi-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-  .kpi-value { font-size: 26px; font-weight: 700; margin-top: 6px; color: #2c3e50; }
-  .kpi-sub { font-size: 12px; color: #95a5a6; margin-top: 4px; }
+  .kpi-label { font-size: 10px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .kpi-value { font-size: 22px; font-weight: 700; margin-top: 4px; color: #2c3e50; }
+  .kpi-sub { font-size: 11px; color: #95a5a6; margin-top: 2px; }
 
   /* TOTAL CARD */
   .total-card {
     background: linear-gradient(135deg, #E63946 0%, #9D4EDD 50%, #0077B6 100%);
     color: white;
-    padding: 26px;
+    padding: 20px;
     border-radius: 18px;
     box-shadow: 0 10px 32px rgba(230,57,70,0.35);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
   }
@@ -131,58 +132,61 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     position: relative;
     z-index: 2;
   }
   .total-card-header h2 {
-    font-size: 22px;
+    font-size: 17px;
     font-weight: 800;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    line-height: 1.3;
   }
   .total-card-header .badge {
     background: rgba(255,255,255,0.25);
-    padding: 5px 14px;
+    padding: 4px 12px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     backdrop-filter: blur(10px);
+    white-space: nowrap;
   }
   .total-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
     position: relative;
     z-index: 2;
   }
   .total-item {
     background: rgba(255,255,255,0.15);
-    padding: 16px;
+    padding: 14px;
     border-radius: 12px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.2);
   }
   .total-item .label {
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.9;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     font-weight: 600;
   }
   .total-item .value {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     line-height: 1.1;
+    word-break: break-word;
   }
   .total-item .detail {
-    font-size: 11px;
+    font-size: 10px;
     opacity: 0.85;
-    margin-top: 4px;
+    margin-top: 3px;
   }
   .total-item.highlight {
     background: rgba(255,255,255,0.95);
@@ -191,7 +195,7 @@
   }
   .total-item.highlight .value {
     color: #E63946;
-    font-size: 26px;
+    font-size: 22px;
   }
   .total-item.highlight .label { color: #7f8c8d; }
 
@@ -199,37 +203,37 @@
   .info-card {
     background: linear-gradient(135deg, #06D6A0 0%, #00B4D8 100%);
     color: white;
-    padding: 22px;
+    padding: 18px;
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(6,214,160,0.25);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  .info-card h3 { font-size: 18px; margin-bottom: 14px; }
+  .info-card h3 { font-size: 16px; margin-bottom: 12px; }
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
   }
   .benefit-item {
     background: rgba(255,255,255,0.2);
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.5;
   }
-  .benefit-item strong { display: block; margin-bottom: 4px; font-size: 14px; }
+  .benefit-item strong { display: block; margin-bottom: 3px; font-size: 13px; }
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin-top: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
   }
   .plan-card {
     background: rgba(255,255,255,0.2);
-    padding: 14px;
+    padding: 12px;
     border-radius: 10px;
     backdrop-filter: blur(10px);
   }
@@ -250,32 +254,32 @@
     font-size: 10px;
     font-weight: 700;
   }
-  .plan-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .plan-price { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .plan-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .plan-price { font-size: 20px; font-weight: 800; margin-bottom: 3px; }
   .plan-maintenance {
     display: inline-block;
     background: rgba(255,255,255,0.3);
-    padding: 3px 10px;
+    padding: 2px 8px;
     border-radius: 12px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
-  .plan-desc { font-size: 12px; opacity: 0.95; line-height: 1.5; }
+  .plan-desc { font-size: 11px; opacity: 0.95; line-height: 1.5; }
   .addon {
-    margin-top: 12px;
-    padding: 10px 14px;
+    margin-top: 10px;
+    padding: 10px 12px;
     background: rgba(255,255,255,0.15);
     border-radius: 10px;
-    font-size: 13px;
+    font-size: 12px;
   }
   .payment-methods {
-    margin-top: 12px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 2px dashed rgba(255,255,255,0.4);
-    font-size: 13px;
+    font-size: 12px;
     display: flex;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
@@ -285,42 +289,46 @@
     border-radius: 14px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .table-header {
-    padding: 16px 20px;
+    padding: 14px 16px;
     background: #f8fafc;
     border-bottom: 2px solid #e0e6ed;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-  .table-header h3 { font-size: 16px; color: #2c3e50; }
+  .table-header h3 { font-size: 14px; color: #2c3e50; }
   .table-count {
     background: #00B4D8;
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
+    white-space: nowrap;
   }
-  .table-wrapper { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 750px; }
   thead {
     background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
     color: white;
   }
   th {
-    padding: 12px 10px;
+    padding: 10px 8px;
     text-align: center;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    white-space: nowrap;
   }
   th:nth-child(2) { text-align: left; }
   td {
-    padding: 12px 10px;
+    padding: 10px 8px;
     border-bottom: 1px solid #f0f4f8;
     vertical-align: middle;
     text-align: center;
@@ -331,7 +339,7 @@
   tbody tr.potential { background: linear-gradient(90deg, rgba(6,214,160,0.12) 0%, rgba(6,214,160,0.02) 100%); }
   tbody tr.potential td:first-child { border-left: 4px solid #06D6A0; }
 
-  .checkbox-cell { width: 40px; }
+  .checkbox-cell { width: 36px; }
   .checkbox-cell input[type="checkbox"] {
     width: 18px; height: 18px;
     cursor: pointer;
@@ -341,26 +349,27 @@
   .wa-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     background: #25D366;
     color: white;
-    padding: 6px 12px;
+    padding: 6px 10px;
     border-radius: 20px;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     transition: all 0.2s;
     white-space: nowrap;
   }
   .wa-link:hover { background: #128C7E; transform: scale(1.05); }
-  .wa-icon { width: 14px; height: 14px; }
+  .wa-icon { width: 14px; height: 14px; flex-shrink: 0; }
 
   .city-badge {
     display: inline-block;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 12px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
+    white-space: nowrap;
   }
   .city-lujan { background: #e0f4ff; color: #0077B6; }
   .city-pilar { background: #ffe0e9; color: #E63946; }
@@ -368,13 +377,14 @@
   .plan-btn {
     background: white;
     border: 2px solid #e0e6ed;
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 14px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     transition: all 0.2s;
     color: #7f8c8d;
+    white-space: nowrap;
   }
   .plan-btn:hover { transform: scale(1.05); }
   .plan-btn.basic.active {
@@ -397,10 +407,10 @@
     background: white;
     border: 2px solid #9D4EDD;
     color: #9D4EDD;
-    padding: 5px 12px;
+    padding: 5px 8px;
     border-radius: 14px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     transition: all 0.2s;
     white-space: nowrap;
@@ -414,13 +424,14 @@
 
   .price-display {
     display: inline-block;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 12px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     background: #f0f4f8;
     color: #7f8c8d;
-    min-width: 100px;
+    min-width: 80px;
+    white-space: nowrap;
   }
   .price-display.basic { background: #e0f4ff; color: #0077B6; }
   .price-display.advanced { background: #fff4d6; color: #d48806; }
@@ -431,12 +442,13 @@
     background: transparent;
     border: 2px solid #06D6A0;
     color: #06D6A0;
-    padding: 5px 12px;
+    padding: 5px 10px;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     transition: all 0.2s;
+    white-space: nowrap;
   }
   .potential-btn.active {
     background: #06D6A0;
@@ -444,14 +456,106 @@
   }
   .potential-btn:hover { transform: scale(1.05); }
 
+  /* Mobile scroll hint */
+  .scroll-hint {
+    display: none;
+    text-align: center;
+    padding: 8px;
+    font-size: 11px;
+    color: #95a5a6;
+    background: #f8fafc;
+    border-bottom: 1px solid #e0e6ed;
+  }
+
   .hidden { display: none; }
 
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .total-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
-    .header h1 { font-size: 20px; }
-    .kpi-value { font-size: 22px; }
-    th, td { padding: 8px 6px; font-size: 11px; }
-    .total-item .value { font-size: 20px; }
-    .total-item.highlight .value { font-size: 22px; }
+    body { padding: 8px; }
+    .header { padding: 16px; }
+    .header h1 { font-size: 18px; }
+    .header .subtitle { font-size: 12px; }
+    .kpi-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .kpi-card { padding: 12px; }
+    .kpi-value { font-size: 18px; }
+    .kpi-label { font-size: 9px; }
+    .total-card { padding: 16px; }
+    .total-card-header h2 { font-size: 15px; }
+    .total-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .total-item { padding: 10px; }
+    .total-item .value { font-size: 16px; }
+    .total-item.highlight .value { font-size: 18px; }
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+    .scroll-hint { display: block; }
+    .exchange-rate-container {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+    .exchange-rate-container .label-group {
+      justify-content: center;
+    }
+    .info-card { padding: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 6px; }
+    .header h1 { font-size: 16px; }
+    .header .subtitle { font-size: 11px; }
+    .kpi-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    .kpi-card { padding: 10px; border-left-width: 3px; }
+    .kpi-value { font-size: 16px; }
+    .kpi-sub { font-size: 10px; }
+    .total-card { padding: 14px; border-radius: 14px; }
+    .total-card-header h2 { font-size: 13px; }
+    .total-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .total-item .value { font-size: 14px; }
+    .total-item .label { font-size: 9px; }
+    .total-item.highlight .value { font-size: 16px; }
+    .exchange-rate-container input { width: 90px; font-size: 14px; }
+    .table-header h3 { font-size: 12px; }
+    table { min-width: 680px; font-size: 11px; }
+    th { font-size: 9px; padding: 8px 5px; }
+    td { padding: 8px 5px; }
+    .wa-link { padding: 5px 8px; font-size: 10px; }
+    .plan-btn { padding: 4px 6px; font-size: 9px; }
+    .skill-btn { padding: 4px 6px; font-size: 9px; }
+    .potential-btn { padding: 4px 8px; font-size: 9px; }
+    .price-display { font-size: 10px; padding: 3px 8px; min-width: 70px; }
+    .city-badge { font-size: 10px; padding: 3px 8px; }
+  }
+
+  @media (max-width: 360px) {
+    .kpi-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .total-grid {
+      grid-template-columns: 1fr;
+    }
+    .kpi-value { font-size: 15px; }
   }
 </style>
 </head>
@@ -519,7 +623,7 @@
 <div class="total-card">
   <div class="total-card-header">
     <h2>💎 TOTAL GENERAL (Plan + Skill + Mantenimiento)</h2>
-    <div class="badge">📊 Cálculo en tiempo real</div>
+    <div class="badge">📊 Tiempo real</div>
   </div>
   <div class="total-grid">
     <div class="total-item">
@@ -540,7 +644,7 @@
     <div class="total-item highlight">
       <div class="label">🏆 TOTAL 1er MES (ARS)</div>
       <div class="value" id="totalPrimerMesARS">$0</div>
-      <div class="detail">Único + Mensual del primer mes</div>
+      <div class="detail">Único + Mensual del 1er mes</div>
     </div>
   </div>
 </div>
@@ -567,7 +671,7 @@
     </div>
   </div>
 
-  <h3 style="margin-top: 18px;">💰 Planes en Argentina (Precios Actualizados)</h3>
+  <h3 style="margin-top: 14px;">💰 Planes en Argentina (Precios Actualizados)</h3>
   <div class="pricing-grid">
     <div class="plan-card">
       <div class="plan-name">🥉 Básico</div>
@@ -589,7 +693,7 @@
     </div>
   </div>
   <div class="addon">
-    📊 <strong>Skill Dashboard específico para restaurantes:</strong> + 40 USD por única vez (Opcional) — Se suma al plan elegido.
+    📊 <strong>Skill Tablero de Control específico para restaurantes:</strong> + 40 USD por única vez (Opcional) — Se suma al plan elegido.
   </div>
   <div class="payment-methods">
     <div>💳 <strong>Métodos de Pago:</strong></div>
@@ -604,6 +708,7 @@
     <h3>🍽️ Leads de Restaurantes - Luján & Pilar</h3>
     <span class="table-count" id="countLeads">0 negocios</span>
   </div>
+  <div class="scroll-hint">👉 Deslizá horizontalmente para ver todas las columnas</div>
   <div class="table-wrapper">
     <table>
       <thead>
@@ -614,7 +719,7 @@
           <th>🥉 Básico</th>
           <th>⭐ Avanzado</th>
           <th>🥇 Premium</th>
-          <th>📊 Skill</th>
+          <th>📊 Skill Tablero de Control (Opcional)</th>
           <th>💰 Precio Total</th>
           <th>🎯 Potencial</th>
         </tr>
@@ -625,9 +730,8 @@
 </div>
 
 <script>
-// ==================== DATOS DE LEADS ACTUALIZADOS ====================
+// ==================== DATOS DE LEADS ====================
 const leads = [
-  // CIUDAD DE LUJÁN (7 leads)
   {ciudad:"Luján", telefono:"+5492323329521", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323606699", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323538045", planSeleccionado:null, skill:false, potential:false},
@@ -635,8 +739,6 @@ const leads = [
   {ciudad:"Luján", telefono:"+5492323631085", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5491124699713", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323213413", planSeleccionado:null, skill:false, potential:false},
-
-  // CIUDAD DE PILAR (5 leads)
   {ciudad:"Pilar", telefono:"+5491130537858", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491150506910", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491135664280", planSeleccionado:null, skill:false, potential:false},
@@ -644,34 +746,43 @@ const leads = [
   {ciudad:"Pilar", telefono:"+5491121778420", planSeleccionado:null, skill:false, potential:false}
 ];
 
-// ==================== PRECIOS PLANES ACTUALIZADOS ====================
+// ==================== PRECIOS ====================
 const PLANES = {
-  basico:   { nombre: "🥉 Básico",   precio: 98000,  mantenimiento: 0  },
-  avanzado: { nombre: "⭐ Avanzado", precio: 160000, mantenimiento: 30 },
-  premium:  { nombre: "🥇 Premium",  precio: 430000, mantenimiento: 60 }
+  basico:   { nombre:"Básico",   precio:98000,  mantenimiento:0,  emoji:"🥉" },
+  avanzado: { nombre:"Avanzado", precio:160000, mantenimiento:30, emoji:"⭐" },
+  premium:  { nombre:"Premium",  precio:430000, mantenimiento:60, emoji:"🥇" }
 };
-const PRECIO_SKILL = 40; // USD
+const PRECIO_SKILL = 40;
 
-// ==================== MENSAJE DE WHATSAPP ====================
-const msgRestaurantes = encodeURIComponent(`Hola buenas noches!! Somos NEXO-ART y ayudamos a negocios gastronómicos a digitalizar el servicio y atencion, creamos páginas web app para rotiserías, pizzerías y restaurantes, totalmente resposivas para que se vean en cualquier dispositivo.
+// ==================== GENERAR MENSAJE WHATSAPP DINÁMICO ====================
+function generarMensajeWA(idx) {
+  const lead = leads[idx];
+  let msg = `Hola buenas noches!! Somos NEXO-ART y ayudamos a negocios gastronómicos a digitalizar el servicio y atencion, creamos páginas web app para rotiserías, pizzerías y restaurantes, totalmente resposivas para que se vean en cualquier dispositivo.\n\n🍕 ¿Qué logramos con tu web?\nLos clientes pueden hacer pedidos, reservas o consultas online, o simplemente desde un código QR en la mesa pedir al mostrador sin necesidad de que lo atienda una persona.\nLa información llega automáticamente al WhatsApp del local, para responder más rápido y sin perder tiempo.\nAdemás, optimizamos tu presencia en Google Maps y Google Business Profile para que más personas te encuentren y confíen en tu negocio.\n\n💡 Un sitio web no es un gasto, es una inversión:\nTe ayuda a ahorrar tiempo, ordenar la atención y aumentar tus ventas.\nMenos mensajes repetitivos, más pedidos y más tiempo para hacer crecer tu negocio.\n\nMirá un ejemplo de cómo se vería tu local: https://nexoar-art.github.io/TONGOY/`;
 
-🍕 ¿Qué logramos con tu web?
-Los clientes pueden hacer pedidos, reservas o consultas online, o simplemente desde un código QR en la mesa pedir al mostrador sin necesidad de que lo atienda una persona.
-La información llega automáticamente al WhatsApp del local, para responder más rápido y sin perder tiempo.
-Además, optimizamos tu presencia en Google Maps y Google Business Profile para que más personas te encuentren y confíen en tu negocio.
+  // Agregar info del plan seleccionado
+  if (lead.planSeleccionado) {
+    const plan = PLANES[lead.planSeleccionado];
+    msg += `\n\n---\n📋 *Propuesta personalizada para vos:*\n\n`;
+    msg += `${plan.emoji} *Plan ${plan.nombre}:* $${plan.precio.toLocaleString('es-AR')} ARS\n`;
+    if (plan.mantenimiento > 0) {
+      msg += `🔧 *Mantenimiento mensual:* $${plan.mantenimiento} USD/mes\n`;
+    } else {
+      msg += `🔧 *Mantenimiento mensual:* $0 (sin costo)\n`;
+    }
+    if (lead.skill) {
+      msg += `📊 *Skill Tablero de Control:* + $${PRECIO_SKILL} USD (pago único)\n`;
+    }
+    msg += `\n¡Quedamos a disposición para cualquier consulta!`;
+  }
 
-💡 Un sitio web no es un gasto, es una inversión:
-Te ayuda a ahorrar tiempo, ordenar la atención y aumentar tus ventas.
-Menos mensajes repetitivos, más pedidos y más tiempo para hacer crecer tu negocio.
-
-Mirá un ejemplo de cómo se vería tu local: https://nexoar-art.github.io/TONGOY/`);
+  return encodeURIComponent(msg);
+}
 
 // ==================== INIT ====================
 function init() {
   renderAll();
 }
 
-// ==================== RENDER ====================
 function renderAll() {
   renderTable();
   updateKPIs();
@@ -681,22 +792,18 @@ function updateKPIs() {
   const totalLeads = leads.length;
   const potenciales = leads.filter(l => l.potential).length;
   const tc = parseFloat(document.getElementById('exchangeRate').value) || 0;
-  
-  let ingresos = 0;
-  let mantenimiento = 0;
-  let ingresosSkills = 0;
+
+  let ingresos = 0, mantenimiento = 0, ingresosSkills = 0;
   leads.forEach(l => {
     if (l.potential && l.planSeleccionado) {
       ingresos += PLANES[l.planSeleccionado].precio;
       mantenimiento += PLANES[l.planSeleccionado].mantenimiento;
     }
-    if (l.potential && l.skill) {
-      ingresosSkills += PRECIO_SKILL;
-    }
+    if (l.potential && l.skill) ingresosSkills += PRECIO_SKILL;
   });
-  
+
   const conversion = totalLeads > 0 ? ((potenciales/totalLeads)*100).toFixed(1) : 0;
-  
+
   document.getElementById('kpiTotalLeads').textContent = totalLeads;
   document.getElementById('kpiPotenciales').textContent = potenciales;
   document.getElementById('kpiIngresos').textContent = '$' + ingresos.toLocaleString('es-AR');
@@ -704,12 +811,12 @@ function updateKPIs() {
   document.getElementById('kpiMantenimiento').textContent = '$' + mantenimiento + ' USD';
   document.getElementById('kpiSkills').textContent = '$' + ingresosSkills + ' USD';
   document.getElementById('countLeads').textContent = totalLeads + ' negocios';
-  
+
   const totalUSD = ingresosSkills + mantenimiento;
   const totalUnicoARS = ingresos + (ingresosSkills * tc);
   const totalMensualARS = mantenimiento * tc;
   const totalPrimerMesARS = totalUnicoARS + totalMensualARS;
-  
+
   document.getElementById('totalUSD').textContent = '$' + totalUSD.toLocaleString('en-US') + ' USD';
   document.getElementById('totalUnicoARS').textContent = '$' + Math.round(totalUnicoARS).toLocaleString('es-AR');
   document.getElementById('totalMensualARS').textContent = '$' + Math.round(totalMensualARS).toLocaleString('es-AR');
@@ -719,19 +826,21 @@ function updateKPIs() {
 function renderTable() {
   const tbody = document.getElementById('tbodyLeads');
   tbody.innerHTML = '';
-  
+
   leads.forEach((item, idx) => {
     const tr = document.createElement('tr');
     if (item.potential) tr.classList.add('potential');
-    
+
     const cityClass = item.ciudad === 'Luján' ? 'city-lujan' : 'city-pilar';
     const cityIcon = item.ciudad === 'Luján' ? '⛪' : '🏙️';
-    
-    const waLink = `<a href="https://wa.me/${item.telefono}?text=${msgRestaurantes}" target="_blank" class="wa-link">
+
+    // WhatsApp link dinámico
+    const waMsg = generarMensajeWA(idx);
+    const waLink = `<a href="https://wa.me/${item.telefono}?text=${waMsg}" target="_blank" class="wa-link" id="wa-${idx}">
       <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Enviar
     </a>`;
-    
+
     let priceDisplay = '<span class="price-display">Sin plan</span>';
     if (item.planSeleccionado) {
       const plan = PLANES[item.planSeleccionado];
@@ -742,7 +851,7 @@ function renderTable() {
     } else if (item.skill) {
       priceDisplay = `<span class="price-display has-skill" style="background:#f0e6ff;color:#9D4EDD;">Solo Skill $${PRECIO_SKILL}</span>`;
     }
-    
+
     tr.innerHTML = `
       <td class="checkbox-cell"><input type="checkbox" ${item.potential?'checked':''} onchange="togglePotential(${idx})"></td>
       <td><span class="city-badge ${cityClass}">${cityIcon} ${item.ciudad}</span></td>
