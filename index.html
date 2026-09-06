@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Dashboard Leads Luján & Pilar | NEXO-ART</title>
+<title>Dashboard Leads Luján, Pilar & Escobar | NEXO-ART</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
   body {
@@ -32,7 +32,6 @@
     backdrop-filter: blur(10px);
   }
 
-  /* Exchange Rate Input */
   .exchange-rate-container {
     background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%);
     padding: 16px;
@@ -81,7 +80,6 @@
     backdrop-filter: blur(10px);
   }
 
-  /* KPI Cards */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -107,7 +105,6 @@
   .kpi-value { font-size: 22px; font-weight: 700; margin-top: 4px; color: #2c3e50; }
   .kpi-sub { font-size: 11px; color: #95a5a6; margin-top: 2px; }
 
-  /* TOTAL CARD */
   .total-card {
     background: linear-gradient(135deg, #E63946 0%, #9D4EDD 50%, #0077B6 100%);
     color: white;
@@ -199,7 +196,6 @@
   }
   .total-item.highlight .label { color: #7f8c8d; }
 
-  /* Info Card */
   .info-card {
     background: linear-gradient(135deg, #06D6A0 0%, #00B4D8 100%);
     color: white;
@@ -283,7 +279,6 @@
     flex-wrap: wrap;
   }
 
-  /* Tables */
   .table-container {
     background: white;
     border-radius: 14px;
@@ -373,6 +368,7 @@
   }
   .city-lujan { background: #e0f4ff; color: #0077B6; }
   .city-pilar { background: #ffe0e9; color: #E63946; }
+  .city-escobar { background: #e6ffe0; color: #2d6a2e; }
 
   .plan-btn {
     background: white;
@@ -471,7 +467,6 @@
   @media (max-width: 1024px) {
     .total-grid { grid-template-columns: repeat(2, 1fr); }
   }
-
   @media (max-width: 768px) {
     body { padding: 8px; }
     .header { padding: 16px; }
@@ -498,7 +493,6 @@
     .exchange-rate-container .label-group { justify-content: center; }
     .info-card { padding: 14px; }
   }
-
   @media (max-width: 480px) {
     body { padding: 6px; }
     .header h1 { font-size: 16px; }
@@ -525,7 +519,6 @@
     .price-display { font-size: 10px; padding: 3px 8px; min-width: 70px; }
     .city-badge { font-size: 10px; padding: 3px 8px; }
   }
-
   @media (max-width: 360px) {
     .kpi-grid { grid-template-columns: 1fr 1fr; }
     .total-grid { grid-template-columns: 1fr; }
@@ -536,11 +529,11 @@
 <body>
 
 <div class="header">
-  <h1>🇦🇷 Dashboard Leads Luján & Pilar | NEXO-ART</h1>
+  <h1>🇦🇷 Dashboard Leads Luján, Pilar & Escobar | NEXO-ART</h1>
   <div class="subtitle">
     <strong>NEXO‑ART</strong> es una agencia digital especializada en crear páginas web y soluciones de e‑commerce diseñadas para aumentar ventas y optimizar la atención al cliente. Transformamos la presencia online de negocios gastronómicos, comercios y empresas industriales, convirtiendo visitantes en clientes reales.
   </div>
-  <div class="date">📅 Domingo, 06 Septiembre 2026</div>
+  <div class="date">📅 Sábado, 06 Septiembre 2026</div>
 </div>
 
 <!-- Exchange Rate Input -->
@@ -564,7 +557,7 @@
   <div class="kpi-card blue">
     <div class="kpi-label">Total Leads</div>
     <div class="kpi-value" id="kpiTotalLeads">0</div>
-    <div class="kpi-sub">Luján + Pilar</div>
+    <div class="kpi-sub">Luján + Pilar + Escobar</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">Potenciales Clientes</div>
@@ -679,7 +672,7 @@
 <!-- Table of Leads -->
 <div class="table-container">
   <div class="table-header">
-    <h3>🍽️ Leads de Restaurantes - Luján & Pilar</h3>
+    <h3>🍽️ Leads de Restaurantes - Luján, Pilar & Escobar</h3>
     <span class="table-count" id="countLeads">0 negocios</span>
   </div>
   <div class="scroll-hint">👉 Deslizá horizontalmente para ver todas las columnas</div>
@@ -706,7 +699,7 @@
 <script>
 // ==================== DATOS DE LEADS ====================
 const leads = [
-  // LUJÁN (7 leads originales)
+  // CIUDAD DE LUJÁN (7 leads)
   {ciudad:"Luján", telefono:"+5492323329521", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323606699", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323538045", planSeleccionado:null, skill:false, potential:false},
@@ -715,27 +708,25 @@ const leads = [
   {ciudad:"Luján", telefono:"+5491124699713", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323213413", planSeleccionado:null, skill:false, potential:false},
 
-  // PILAR (5 leads originales)
+  // CIUDAD DE PILAR (5 leads)
   {ciudad:"Pilar", telefono:"+5491130537858", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491150506910", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491135664280", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491131475467", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491121778420", planSeleccionado:null, skill:false, potential:false},
 
-  // NUEVOS LEADS AGREGADOS (11 leads)
-  // Códigos 03484 → zona Pilar / Exaltación de la Cruz
-  {ciudad:"Pilar", telefono:"+5493484310900", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484426356", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484351890", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484354938", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484305579", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484582284", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5493484363828", planSeleccionado:null, skill:false, potential:false},
-  // Códigos 011 → GBA (asignados a Pilar según contexto del dashboard)
-  {ciudad:"Pilar", telefono:"+5491173671293", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5491122658431", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5491126419288", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5491126753858", planSeleccionado:null, skill:false, potential:false}
+  // CIUDAD DE ESCOBAR (11 leads)
+  {ciudad:"Escobar", telefono:"+5493484310900", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5491173671293", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5491122658431", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5491126419288", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484426356", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484351890", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484354938", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484305579", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5491126753858", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484582284", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Escobar", telefono:"+5493484363828", planSeleccionado:null, skill:false, potential:false}
 ];
 
 // ==================== PRECIOS ====================
@@ -822,11 +813,13 @@ function renderTable() {
     const tr = document.createElement('tr');
     if (item.potential) tr.classList.add('potential');
 
-    const cityClass = item.ciudad === 'Luján' ? 'city-lujan' : 'city-pilar';
-    const cityIcon = item.ciudad === 'Luján' ? '⛪' : '🏙️';
+    let cityClass, cityIcon;
+    if (item.ciudad === 'Luján') { cityClass = 'city-lujan'; cityIcon = '⛪'; }
+    else if (item.ciudad === 'Pilar') { cityClass = 'city-pilar'; cityIcon = '🏙️'; }
+    else { cityClass = 'city-escobar'; cityIcon = '🌿'; }
 
     const waMsg = generarMensajeWA(idx);
-    const waLink = `<a href="https://wa.me/${item.telefono}?text=${waMsg}" target="_blank" class="wa-link" id="wa-${idx}">
+    const waLink = `<a href="https://wa.me/${item.telefono}?text=${waMsg}" target="_blank" class="wa-link">
       <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Enviar
     </a>`;
