@@ -456,7 +456,6 @@
   }
   .potential-btn:hover { transform: scale(1.05); }
 
-  /* Mobile scroll hint */
   .scroll-hint {
     display: none;
     text-align: center;
@@ -469,11 +468,8 @@
 
   .hidden { display: none; }
 
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
-    .total-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .total-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
@@ -481,37 +477,25 @@
     .header { padding: 16px; }
     .header h1 { font-size: 18px; }
     .header .subtitle { font-size: 12px; }
-    .kpi-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .kpi-card { padding: 12px; }
     .kpi-value { font-size: 18px; }
     .kpi-label { font-size: 9px; }
     .total-card { padding: 16px; }
     .total-card-header h2 { font-size: 15px; }
-    .total-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
+    .total-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .total-item { padding: 10px; }
     .total-item .value { font-size: 16px; }
     .total-item.highlight .value { font-size: 18px; }
-    .benefits-grid {
-      grid-template-columns: 1fr;
-    }
-    .pricing-grid {
-      grid-template-columns: 1fr;
-    }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
     .scroll-hint { display: block; }
     .exchange-rate-container {
       flex-direction: column;
       align-items: stretch;
       text-align: center;
     }
-    .exchange-rate-container .label-group {
-      justify-content: center;
-    }
+    .exchange-rate-container .label-group { justify-content: center; }
     .info-card { padding: 14px; }
   }
 
@@ -519,19 +503,13 @@
     body { padding: 6px; }
     .header h1 { font-size: 16px; }
     .header .subtitle { font-size: 11px; }
-    .kpi-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-    }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
     .kpi-card { padding: 10px; border-left-width: 3px; }
     .kpi-value { font-size: 16px; }
     .kpi-sub { font-size: 10px; }
     .total-card { padding: 14px; border-radius: 14px; }
     .total-card-header h2 { font-size: 13px; }
-    .total-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }
+    .total-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
     .total-item .value { font-size: 14px; }
     .total-item .label { font-size: 9px; }
     .total-item.highlight .value { font-size: 16px; }
@@ -549,12 +527,8 @@
   }
 
   @media (max-width: 360px) {
-    .kpi-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .total-grid {
-      grid-template-columns: 1fr;
-    }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .total-grid { grid-template-columns: 1fr; }
     .kpi-value { font-size: 15px; }
   }
 </style>
@@ -566,7 +540,7 @@
   <div class="subtitle">
     <strong>NEXO‑ART</strong> es una agencia digital especializada en crear páginas web y soluciones de e‑commerce diseñadas para aumentar ventas y optimizar la atención al cliente. Transformamos la presencia online de negocios gastronómicos, comercios y empresas industriales, convirtiendo visitantes en clientes reales.
   </div>
-  <div class="date">📅 Sábado, 05 Septiembre 2026</div>
+  <div class="date">📅 Domingo, 06 Septiembre 2026</div>
 </div>
 
 <!-- Exchange Rate Input -->
@@ -732,6 +706,7 @@
 <script>
 // ==================== DATOS DE LEADS ====================
 const leads = [
+  // LUJÁN (7 leads originales)
   {ciudad:"Luján", telefono:"+5492323329521", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323606699", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323538045", planSeleccionado:null, skill:false, potential:false},
@@ -739,11 +714,28 @@ const leads = [
   {ciudad:"Luján", telefono:"+5492323631085", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5491124699713", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Luján", telefono:"+5492323213413", planSeleccionado:null, skill:false, potential:false},
+
+  // PILAR (5 leads originales)
   {ciudad:"Pilar", telefono:"+5491130537858", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491150506910", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491135664280", planSeleccionado:null, skill:false, potential:false},
   {ciudad:"Pilar", telefono:"+5491131475467", planSeleccionado:null, skill:false, potential:false},
-  {ciudad:"Pilar", telefono:"+5491121778420", planSeleccionado:null, skill:false, potential:false}
+  {ciudad:"Pilar", telefono:"+5491121778420", planSeleccionado:null, skill:false, potential:false},
+
+  // NUEVOS LEADS AGREGADOS (11 leads)
+  // Códigos 03484 → zona Pilar / Exaltación de la Cruz
+  {ciudad:"Pilar", telefono:"+5493484310900", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484426356", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484351890", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484354938", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484305579", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484582284", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5493484363828", planSeleccionado:null, skill:false, potential:false},
+  // Códigos 011 → GBA (asignados a Pilar según contexto del dashboard)
+  {ciudad:"Pilar", telefono:"+5491173671293", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491122658431", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491126419288", planSeleccionado:null, skill:false, potential:false},
+  {ciudad:"Pilar", telefono:"+5491126753858", planSeleccionado:null, skill:false, potential:false}
 ];
 
 // ==================== PRECIOS ====================
@@ -759,7 +751,6 @@ function generarMensajeWA(idx) {
   const lead = leads[idx];
   let msg = `Hola buenas noches!! Somos NEXO-ART y ayudamos a negocios gastronómicos a digitalizar el servicio y atencion, creamos páginas web app para rotiserías, pizzerías y restaurantes, totalmente resposivas para que se vean en cualquier dispositivo.\n\n🍕 ¿Qué logramos con tu web?\nLos clientes pueden hacer pedidos, reservas o consultas online, o simplemente desde un código QR en la mesa pedir al mostrador sin necesidad de que lo atienda una persona.\nLa información llega automáticamente al WhatsApp del local, para responder más rápido y sin perder tiempo.\nAdemás, optimizamos tu presencia en Google Maps y Google Business Profile para que más personas te encuentren y confíen en tu negocio.\n\n💡 Un sitio web no es un gasto, es una inversión:\nTe ayuda a ahorrar tiempo, ordenar la atención y aumentar tus ventas.\nMenos mensajes repetitivos, más pedidos y más tiempo para hacer crecer tu negocio.\n\nMirá un ejemplo de cómo se vería tu local: https://nexoar-art.github.io/TONGOY/`;
 
-  // Agregar info del plan seleccionado
   if (lead.planSeleccionado) {
     const plan = PLANES[lead.planSeleccionado];
     msg += `\n\n---\n📋 *Propuesta personalizada para vos:*\n\n`;
@@ -834,7 +825,6 @@ function renderTable() {
     const cityClass = item.ciudad === 'Luján' ? 'city-lujan' : 'city-pilar';
     const cityIcon = item.ciudad === 'Luján' ? '⛪' : '🏙️';
 
-    // WhatsApp link dinámico
     const waMsg = generarMensajeWA(idx);
     const waLink = `<a href="https://wa.me/${item.telefono}?text=${waMsg}" target="_blank" class="wa-link" id="wa-${idx}">
       <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
